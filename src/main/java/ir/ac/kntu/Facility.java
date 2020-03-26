@@ -8,6 +8,15 @@ public class Facility {
     private boolean state = false;
     private Date lastCheckUp = new Date();
 
+    public Facility() {}
+
+    public Facility(String type, int number, boolean state, Date lastCheckUp) {
+        this.type = type;
+        this.number = number;
+        this.state = state;
+        this.lastCheckUp = lastCheckUp;
+    }
+
     public String getType() {
         return type;
     }

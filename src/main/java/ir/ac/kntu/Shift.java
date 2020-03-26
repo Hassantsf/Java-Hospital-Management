@@ -6,6 +6,13 @@ public class Shift {
     private Date startShift = new Date();
     private double duration = 0.0;
 
+    public Shift() {}
+
+    public Shift(Date startShift, double duration) {
+        this.duration = duration;
+        this.startShift = startShift;
+    }
+
     public Date getStartShift() {
         return startShift;
     }
