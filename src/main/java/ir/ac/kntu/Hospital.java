@@ -9,6 +9,7 @@ public class Hospital {
     private ArrayList<Nurse> Nurses = new ArrayList<Nurse>();
     private ArrayList<Patient> patients = new ArrayList<Patient>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
+    private ArrayList<Facility> facilities = new ArrayList<Facility>();
 
     public String getName() {
         return name;
@@ -17,4 +18,6 @@ public class Hospital {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
