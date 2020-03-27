@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public class Facility {
     private String type = null;
@@ -47,5 +48,9 @@ public class Facility {
 
     public void setLastCheckUp(Date lastCheckUp) {
         this.lastCheckUp = lastCheckUp;
+    }
+    public Facility addFacility() {
+        Scanner sc = new Scanner(System.in);
+        return new Facility();
     }
 }
