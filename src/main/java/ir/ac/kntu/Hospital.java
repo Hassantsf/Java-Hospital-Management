@@ -7,7 +7,7 @@ public class Hospital {
     private ArrayList<Section> sections = new ArrayList<Section>();
     private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
     private ArrayList<Nurse> Nurses = new ArrayList<Nurse>();
-    ArrayList<Patient> patients = new ArrayList<Patient>();
+    private ArrayList<Patient> patients = new ArrayList<Patient>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
     private ArrayList<Facility> facilities = new ArrayList<Facility>();
 
@@ -20,8 +20,55 @@ public class Hospital {
     }
 
     public void addPatient(Patient newPatient) {
-        patients.add(newPatient);
+        getPatients().add(newPatient);
         System.out.println("Your Patient add to data base successfully!");
     }
 
+    public ArrayList<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(ArrayList<Section> sections) {
+        this.sections = sections;
+    }
+
+    public ArrayList<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(ArrayList<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
+    public ArrayList<Nurse> getNurses() {
+        return Nurses;
+    }
+
+    public void setNurses(ArrayList<Nurse> nurses) {
+        Nurses = nurses;
+    }
+
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(ArrayList<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public ArrayList<Facility> getFacilities() {
+        return facilities;
+    }
+
+    public void setFacilities(ArrayList<Facility> facilities) {
+        this.facilities = facilities;
+    }
 }
