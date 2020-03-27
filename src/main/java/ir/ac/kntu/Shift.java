@@ -35,6 +35,8 @@ public class Shift {
                 return "Thu";
             case 7:
                 return "Fri";
+            default:
+                return "";
         }
     }
 
@@ -69,5 +71,14 @@ public class Shift {
         day = sc.nextInt();
 
         return new Shift(start, end, day);
+    }
+
+    public String toString() {
+        Shift store = new Shift();
+        store.setDay(day);
+        String dayOfWeek = store.getDayOfWeek();
+        return "Start of Shift: " + startShift +
+                "\nEnd of Shift: " + endShift +
+                "\nday: " + dayOfWeek;
     }
 }

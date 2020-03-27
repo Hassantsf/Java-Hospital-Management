@@ -39,4 +39,8 @@ public class ShiftDate {
         minute = sc.nextInt();
         return new ShiftDate(hour, minute);
     }
+
+    public String toString() {
+        return  hour + ":" + minute;
+    }
 }
