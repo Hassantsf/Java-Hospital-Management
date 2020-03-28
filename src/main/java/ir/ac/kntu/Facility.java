@@ -53,4 +53,20 @@ public class Facility {
         Scanner sc = new Scanner(System.in);
         return new Facility();
     }
+
+    public Facility newFacility(Hospital hospital) {
+        Scanner sc = new Scanner(System.in);
+        String newType;
+        int number;
+        Date newCheckUp = new Date();
+        boolean state;
+        System.out.println("Creating New Facility:\n");
+        System.out.println("Enter Type Of Facility:");
+        newType = sc.nextLine();
+        System.out.println("Enter The Facility number: ");
+        number = sc.nextInt();
+        System.out.println("The State of Facility is by default Healthy");
+        System.out.println("You Can Change the State and Last Check up Manuall!y");
+        return new Facility(newType, number, true, new Date());
+    }
 }

@@ -189,4 +189,14 @@ public class Patient {
         return newPatient;
     }
 
+    public int indexOfPatient (Hospital hospital, int id) {
+        int index = 0;
+        for (int i = 0; i < hospital.getPatients().size(); i++) {
+            if (id == hospital.getPatients().get(i).id) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
 }

@@ -7,8 +7,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Shift a = new Shift();
-        a = a.addShift();
-        System.out.println(a);
+        Patient a = new Patient();
+        Hospital ht = new Hospital();
+        ht.addPatient(a.addPatient(ht));
+        System.out.println(ht.getPatients().get(0));
+        Doctor b = new Doctor();
+        ht.addDoctor(b.addDoctor(ht));
+        System.out.println(ht.getDoctors().get(0));
     }
 }

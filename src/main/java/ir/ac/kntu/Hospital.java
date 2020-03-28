@@ -19,11 +19,6 @@ public class Hospital {
         this.name = name;
     }
 
-    public void addPatient(Patient newPatient) {
-        getPatients().add(newPatient);
-        System.out.println("Your Patient add to data base successfully!");
-    }
-
     public ArrayList<Section> getSections() {
         return sections;
     }
@@ -70,5 +65,14 @@ public class Hospital {
 
     public void setFacilities(ArrayList<Facility> facilities) {
         this.facilities = facilities;
+    }
+
+    public void addPatient(Patient newPatient) {
+        getPatients().add(newPatient);
+        System.out.println("Your Patient add to data base successfully!");
+    }
+
+    public void addDoctor(Doctor newDoctor) {
+        getDoctors().add(newDoctor);
     }
 }
