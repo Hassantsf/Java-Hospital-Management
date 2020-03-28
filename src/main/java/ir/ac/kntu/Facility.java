@@ -49,9 +49,13 @@ public class Facility {
     public void setLastCheckUp(Date lastCheckUp) {
         this.lastCheckUp = lastCheckUp;
     }
-    public Facility addFacility() {
-        Scanner sc = new Scanner(System.in);
-        return new Facility();
+
+    public String toString() {
+        return "Facility:\n" +
+                "type = '" + type + '\'' +
+                " number = " + number +
+                " state = " + (state ? "'Available'" : "Unavailable") +
+                " lastCheckUp = " + lastCheckUp;
     }
 
     public Facility newFacility(Hospital hospital) {
@@ -60,7 +64,7 @@ public class Facility {
         int number;
         Date newCheckUp = new Date();
         boolean state;
-        System.out.println("Creating New Facility:\n");
+        System.out.println("Creating New Facility\n");
         System.out.println("Enter Type Of Facility:");
         newType = sc.nextLine();
         System.out.println("Enter The Facility number: ");
