@@ -42,6 +42,14 @@ public class Room {
         this.state = state;
     }
 
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
+    }
+
     public Room newRoom(Hospital hospital, String sectionName) {
         int number;
         boolean newState;
@@ -68,11 +76,14 @@ public class Room {
         return room;
     }
 
-    public String getSectionName() {
-        return sectionName;
-    }
-
-    public void setSectionName(String sectionName) {
-        this.sectionName = sectionName;
+    public String toString() {
+        String result = "Room" +
+                "number = " + number +
+                "  state=" + (state ? "Available" : "Unavailable") +
+                "  sectionName =' " + sectionName + "\'\n";
+        for (int i = 0; i < facilities.size(); i++) {
+            result += facilities.toString() + '\n';
+        }
+        return result;
     }
 }
