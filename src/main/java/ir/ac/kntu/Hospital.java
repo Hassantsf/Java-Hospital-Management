@@ -57,6 +57,11 @@ public class Hospital {
         System.out.println("Your Room add to data base successfully!");
     }
 
+    public void addSection (Section newSection) {
+        sections.add(newSection);
+        System.out.println("Your Section add to data base successfully!");
+    }
+
     public ArrayList<Patient> getPatients() {
         return patients;
     }

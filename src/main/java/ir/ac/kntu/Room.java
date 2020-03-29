@@ -7,13 +7,15 @@ public class Room {
     private int number = 0;
     private ArrayList<Facility> facilities = new ArrayList<>();
     private boolean state = false;
+    private String sectionName;
 
     public Room() {}
 
-    public Room(int number, ArrayList<Facility> facilities, boolean state) {
+    public Room(int number, ArrayList<Facility> facilities, boolean state, String sectionName) {
         this.number = number;
         this.facilities = facilities;
         this.state = state;
+        this.setSectionName(sectionName);
     }
 
     public int getNumber() {
@@ -39,14 +41,15 @@ public class Room {
     public void setState(boolean state) {
         this.state = state;
     }
-    public Room newRoom(Hospital hospital) {
+
+    public Room newRoom(Hospital hospital, String sectionName) {
         int number;
         boolean newState;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Creating new Facility: \n");
+        System.out.println("Creating new Room: \n");
         System.out.println("Enter Number of Room: ");
         number = sc.nextInt();
-        System.out.println("Do you want to add Rooms right now: (1 : yes | 2 : no)");
+        System.out.println("Do you want to add Facilities right now: (1 : yes | 2 : no)");
         int choice = sc.nextInt();
         ArrayList<Facility> facilities = new ArrayList<>();
         if (choice == 1) {
@@ -60,8 +63,16 @@ public class Room {
         }
         System.out.println("Your room by default is available!");
         newState = true;
-        Room room = new Room(number, facilities, newState);
+        Room room = new Room(number, facilities, newState, sectionName);
         hospital.addRoom(room);
         return room;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
     }
 }
