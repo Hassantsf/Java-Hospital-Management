@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hospital {
     private String name;
@@ -9,7 +10,6 @@ public class Hospital {
     private ArrayList<Nurse> Nurses = new ArrayList<Nurse>();
     private ArrayList<Patient> patients = new ArrayList<Patient>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
-    private ArrayList<Facility> facilities = new ArrayList<Facility>();
 
     public String getName() {
         return name;
@@ -19,60 +19,45 @@ public class Hospital {
         this.name = name;
     }
 
-    public ArrayList<Section> getSections() {
-        return sections;
-    }
-
     public void setSections(ArrayList<Section> sections) {
         this.sections = sections;
-    }
-
-    public ArrayList<Doctor> getDoctors() {
-        return doctors;
     }
 
     public void setDoctors(ArrayList<Doctor> doctors) {
         this.doctors = doctors;
     }
 
-    public ArrayList<Nurse> getNurses() {
-        return Nurses;
-    }
 
     public void setNurses(ArrayList<Nurse> nurses) {
         Nurses = nurses;
     }
 
-    public ArrayList<Patient> getPatients() {
-        return patients;
-    }
 
     public void setPatients(ArrayList<Patient> patients) {
         this.patients = patients;
     }
 
-    public ArrayList<Room> getRooms() {
-        return rooms;
-    }
 
     public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 
-    public ArrayList<Facility> getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(ArrayList<Facility> facilities) {
-        this.facilities = facilities;
-    }
-
     public void addPatient(Patient newPatient) {
-        getPatients().add(newPatient);
+        patients.add(newPatient);
         System.out.println("Your Patient add to data base successfully!");
     }
 
     public void addDoctor(Doctor newDoctor) {
-        getDoctors().add(newDoctor);
+        doctors.add(newDoctor);
+        System.out.println("Your Doctor add to data base successfully!");
+    }
+
+    public void addRoom (Room newRoom) {
+        rooms.add(newRoom);
+        System.out.println("Your Room add to data base successfully!");
+    }
+
+    public ArrayList<Patient> getPatients() {
+        return patients;
     }
 }

@@ -49,6 +49,8 @@ public class Doctor {
         }
 
         System.out.println("Your doctor was successfully created!");
+        Doctor doctor = new Doctor(name, IDs, shifts, personnelID);
+        hospital.addDoctor(doctor);
         return new Doctor(name, IDs, shifts, personnelID);
     }
 

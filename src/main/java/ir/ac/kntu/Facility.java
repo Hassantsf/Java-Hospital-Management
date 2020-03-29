@@ -58,7 +58,7 @@ public class Facility {
                 " lastCheckUp = " + lastCheckUp;
     }
 
-    public Facility newFacility(Hospital hospital) {
+    public Facility newFacility() {
         Scanner sc = new Scanner(System.in);
         String newType;
         int number;
@@ -70,7 +70,7 @@ public class Facility {
         System.out.println("Enter The Facility number: ");
         number = sc.nextInt();
         System.out.println("The State of Facility is by default Healthy");
-        System.out.println("You Can Change the State and Last Check up Manuall!y");
+        System.out.println("You Can Change the State and Last Check up Manually!");
         return new Facility(newType, number, true, new Date());
     }
 }
