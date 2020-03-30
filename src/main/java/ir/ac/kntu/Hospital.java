@@ -1,7 +1,6 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Hospital {
     private String name;
@@ -77,7 +76,7 @@ public class Hospital {
     }
 
     public int indexOfRoom(int numberOfRoom, String sectionName) {
-        int result = 0;
+        int result = -1;
         for (int i = 0; i < rooms.size(); i++) {
             if (rooms.get(i).getSectionName().equals(sectionName) && rooms.get(i).getNumber() == numberOfRoom) {
                 result = i;
@@ -88,13 +87,17 @@ public class Hospital {
     }
 
     public int indexOfPatient (int id) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < patients.size(); i++) {
             if (id == patients.get(i).getId()) {
                 index = i;
+                break;
             }
         }
         return index;
     }
 
+    public ArrayList<Nurse> getNurses() {
+        return nurses;
+    }
 }

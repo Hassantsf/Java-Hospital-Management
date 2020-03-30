@@ -13,6 +13,6 @@ public class Main {
         System.out.println(a);
         Nurse s = new Nurse();
         s.newNurse(ht);
-        System.out.println(ht.getRooms().get(0));
+        ht.getNurses().get(0).nurseLog();
     }
 }

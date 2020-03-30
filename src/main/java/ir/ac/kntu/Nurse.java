@@ -71,8 +71,10 @@ public class Nurse {
                 roomNumber = sc.nextInt();
                 System.out.println("Enter The Section Name of Room: ");
                 sectionName = sc.nextLine();
-                if (hospital.indexOfRoom(roomNumber, sectionName) > 0) {
+                sectionName = sc.nextLine();
+                if (hospital.indexOfRoom(roomNumber, sectionName) >= 0) {
                     newRooms.add(roomNumber);
+                    rooms.add(roomNumber);
                     System.out.println("Room Added Successfully!");
                 }
             }
@@ -94,5 +96,29 @@ public class Nurse {
         System.out.println("Enter The Personnel ID: ");
         int newID = sc.nextInt();
         Nurse newNurse = new Nurse(newName, newRooms, newShifts, newID);
+        hospital.addNurse(newNurse);
+    }
+
+    public void nurseLog() {
+        System.out.println("Nurse: " +
+                "name='" + name + '\'' +
+                ", personnelID=" + personnelID + "\n");
+        if (rooms.size() == 0) {
+            System.out.println("No Room Have been registered");
+        }
+        else {
+            System.out.println("Rooms: ");
+            for (int i = 0; i < rooms.size(); i++) {
+                System.out.println("Room " + (i + 1) + ": " + rooms.get(i));
+            }
+        }
+        if (shifts.size() == 0) {
+            System.out.println("No Shift Have been registered");
+        } else {
+            System.out.println("Shift: ");
+            for (int i = 0; i < shifts.size(); i++) {
+                System.out.println(shifts.get(i));
+            }
+        }
     }
 }
