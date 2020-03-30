@@ -17,7 +17,7 @@ public class Doctor {
         this.personnelID = personnelID;
     }
 
-    public Doctor addDoctor(Hospital hospital) {
+    public void newDoctor(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter name: ");
         String name = sc.nextLine();
@@ -28,14 +28,14 @@ public class Doctor {
         ArrayList<Integer> IDs = new ArrayList<>();
         ArrayList<Shift> shifts = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            System.out.println("Please enter " + i + 1 + "'th Patient ID's number: ");
+            System.out.println("Please enter " + (i + 1) + "'th Patient ID's number: ");
             id = sc.nextInt();
             Patient patient = new Patient();
-            int indexOfPatient = patient.indexOfPatient(hospital, id);
+            int indexOfPatient = hospital.indexOfPatient(id);
             if (indexOfPatient > 0) {
                 IDs.add(id);
                 System.out.println("The patient added successfully!");
-                hospital.getPatients().get(indexOfPatient).setDoctor(name);
+                hospital.getPatients().get(indexOfPatient).setDoctorID(personnelD);
             } else {
                 System.out.println("Your patient haven't been found!");
                 System.out.println("Create Patient first than try again!");
@@ -45,13 +45,12 @@ public class Doctor {
         for (int i = 0; i < 3; i++) {
             System.out.println("Please enter " + i + 1 + "doctor's shift ");
             Shift newShift = new Shift();
-            shifts.add(newShift.addShift());
+            shifts.add(newShift.newShift());
         }
 
         System.out.println("Your doctor was successfully created!");
         Doctor doctor = new Doctor(name, IDs, shifts, personnelID);
         hospital.addDoctor(doctor);
-        return new Doctor(name, IDs, shifts, personnelID);
     }
 
     public String toString() {

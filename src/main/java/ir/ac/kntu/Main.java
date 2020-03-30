@@ -10,5 +10,9 @@ public class Main {
         Hospital ht = new Hospital();
         Room a = new Room();
         a = a.newRoom(ht, "icu");
+        System.out.println(a);
+        Nurse s = new Nurse();
+        s.newNurse(ht);
+        System.out.println(ht.getRooms().get(0));
     }
 }

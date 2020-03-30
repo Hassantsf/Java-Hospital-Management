@@ -52,4 +52,15 @@ public class Section {
         hospital.addSection(section);
         return section;
     }
+
+    public String toString() {
+        String result = "";
+        System.out.println("Section: " +
+                "name = '" + name + '\'' +
+                " rooms = " + rooms);
+        for (int i = 0; i < rooms.size(); i++) {
+            result += rooms.toString() + '\n';
+        }
+        return result;
+    }
 }

@@ -7,7 +7,7 @@ public class Hospital {
     private String name;
     private ArrayList<Section> sections = new ArrayList<Section>();
     private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
-    private ArrayList<Nurse> Nurses = new ArrayList<Nurse>();
+    private ArrayList<Nurse> nurses = new ArrayList<Nurse>();
     private ArrayList<Patient> patients = new ArrayList<Patient>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
 
@@ -29,7 +29,7 @@ public class Hospital {
 
 
     public void setNurses(ArrayList<Nurse> nurses) {
-        Nurses = nurses;
+        nurses = nurses;
     }
 
 
@@ -53,7 +53,7 @@ public class Hospital {
     }
 
     public void addRoom (Room newRoom) {
-        rooms.add(newRoom);
+        getRooms().add(newRoom);
         System.out.println("Your Room add to data base successfully!");
     }
 
@@ -62,7 +62,39 @@ public class Hospital {
         System.out.println("Your Section add to data base successfully!");
     }
 
+    public void addNurse (Nurse newNurse) {
+        nurses.add(newNurse);
+        System.out.println("Your Nurse add to data base successfully!");
+    }
+
     public ArrayList<Patient> getPatients() {
         return patients;
     }
+
+    public ArrayList<Room> getRooms() {
+//        return (ArrayList<Room>) List.copyOf(rooms);
+        return rooms;
+    }
+
+    public int indexOfRoom(int numberOfRoom, String sectionName) {
+        int result = 0;
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getSectionName().equals(sectionName) && rooms.get(i).getNumber() == numberOfRoom) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public int indexOfPatient (int id) {
+        int index = 0;
+        for (int i = 0; i < patients.size(); i++) {
+            if (id == patients.get(i).getId()) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
 }

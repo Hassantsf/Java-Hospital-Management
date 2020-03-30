@@ -77,10 +77,11 @@ public class Room {
     }
 
     public String toString() {
-        String result = "Room" +
+        String result = "";
+        System.out.println("Room\n" +
                 "number = " + number +
-                "  state=" + (state ? "Available" : "Unavailable") +
-                "  sectionName =' " + sectionName + "\'\n";
+                "  state = " + (state ? "Available" : "Unavailable") +
+                "  sectionName = '" + sectionName + "\'\n" + "Facilities: ");
         for (int i = 0; i < facilities.size(); i++) {
             result += facilities.toString() + '\n';
         }

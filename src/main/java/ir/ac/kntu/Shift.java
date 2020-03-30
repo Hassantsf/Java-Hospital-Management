@@ -56,7 +56,7 @@ public class Shift {
         this.endShift = endShift;
     }
 
-    public Shift addShift() {
+    public Shift newShift() {
         Scanner sc = new Scanner(System.in);
         int day;
         ShiftDate start = new ShiftDate();

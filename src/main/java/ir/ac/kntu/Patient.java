@@ -15,12 +15,12 @@ public class Patient {
     private int age = 0;
     private int caseNumber = 0;
     private String insurance = null;
-    private String doctor = null;
+    private int doctorID = 0;
 
     public Patient() {}
 
     public Patient(String firstName, String lastName, String section, String disease, String typeOfApply,
-                   String insurance, String doctor, int id, int age, int caseNumber, Date confineDate, boolean gender) {
+                   String insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
@@ -32,7 +32,7 @@ public class Patient {
         this.age = age;
         this.caseNumber = caseNumber;
         this.insurance = insurance;
-        this.doctor = doctor;
+        this.doctorID = doctorID;
     }
 
     public String getFirstName() {
@@ -123,35 +123,34 @@ public class Patient {
         this.insurance = insurance;
     }
 
-    public String getDoctor() {
-        return doctor;
+    public int getDoctorID() {
+        return doctorID;
     }
 
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
     }
 
     public String toString() {
-        return "Patient: {" +
+        return "Patient: \n" +
                 "firstName = '" + firstName + '\'' +
-                ", lastName = '" + lastName + '\'' +
-                ", id = " + id +
-                ", section = '" + section + '\'' +
-                ", disease = '" + disease + "\'\n" +
-                ", typeOfApply = '" + typeOfApply + '\'' +
-                ", confineDate = '" + confineDate + '\'' +
-                ", gender = '" + (gender ? "male" : "female") + '\'' +
-                ", age = " + age +
-                ", caseNumber = " + caseNumber +
-                ", insurance = '" + insurance + '\'' +
-                ", doctor = '" + doctor + '\'' +
-                "}";
+                " lastName = '" + lastName + '\'' +
+                " id = " + id +
+                " section = '" + section + '\'' +
+                " disease = '" + disease + "\'\n" +
+                " typeOfApply = '" + typeOfApply + '\'' +
+                " confineDate = '" + confineDate + '\'' +
+                " gender = '" + (gender ? "male" : "female") + '\'' +
+                " age = " + age +
+                " caseNumber = " + caseNumber +
+                " insurance = '" + insurance + '\'' +
+                " doctor = " + doctorID + '\'';
     }
 
     public Patient addPatient(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
-        String[] strStore = new String[7];
-        int[] intStore = new int[3];
+        String[] strStore = new String[6];
+        int[] intStore = new int[4];
         boolean boolStore;
         String junk;
         System.out.println("Enter first name: ");
@@ -166,8 +165,6 @@ public class Patient {
         strStore[4] = sc.nextLine();
         System.out.println("Enter insurance: ");
         strStore[5] = sc.nextLine();
-        System.out.println("Enter doctor: ");
-        strStore[6] = sc.nextLine();
 
         System.out.println("Enter National ID: ");
         intStore[0] = sc.nextInt();
@@ -175,6 +172,8 @@ public class Patient {
         intStore[1] = sc.nextInt();
         System.out.println("Enter caseNumber: ");
         intStore[2] = sc.nextInt();
+        System.out.println("Enter doctor ID: ");
+        intStore[3] = sc.nextInt();
         System.out.println("Please enter the right number:");
         System.out.println("1) Male 2)Female");
         int choice = sc.nextInt();
@@ -183,20 +182,10 @@ public class Patient {
         } else {
             boolStore = false;
         }
-        Patient newPatient = new Patient(strStore[0], strStore[1], strStore[2], strStore[3], strStore[4], strStore[5],
-                strStore[6], intStore[0], intStore[1], intStore[2], new Date(), boolStore);
+        Patient newPatient = new Patient(strStore[0], strStore[1], strStore[2], strStore[3], strStore[4], strStore[5]
+                , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore);
         hospital.addPatient(newPatient);
         return newPatient;
-    }
-
-    public int indexOfPatient (Hospital hospital, int id) {
-        int index = 0;
-        for (int i = 0; i < hospital.getPatients().size(); i++) {
-            if (id == hospital.getPatients().get(i).id) {
-                index = i;
-            }
-        }
-        return index;
     }
 
 }
