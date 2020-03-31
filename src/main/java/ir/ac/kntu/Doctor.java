@@ -31,7 +31,7 @@ public class Doctor {
             System.out.println("Please enter " + (i + 1) + "'th Patient ID's number: ");
             id = sc.nextInt();
             Patient patient = new Patient();
-            int indexOfPatient = hospital.indexOfPatient(id);
+            int indexOfPatient = hospital.indexOfPND(id, 3);
             if (indexOfPatient > 0) {
                 IDs.add(id);
                 System.out.println("The patient added successfully!");

@@ -147,7 +147,7 @@ public class Patient {
                 " doctor = " + doctorID + '\'';
     }
 
-    public Patient addPatient(Hospital hospital) {
+    public Patient newPatient(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
         String[] strStore = new String[6];
         int[] intStore = new int[4];
@@ -187,5 +187,5 @@ public class Patient {
         hospital.addPatient(newPatient);
         return newPatient;
     }
-
+    
 }

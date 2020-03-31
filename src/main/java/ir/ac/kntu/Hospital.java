@@ -75,6 +75,10 @@ public class Hospital {
         return rooms;
     }
 
+    public ArrayList<Nurse> getNurses() {
+        return nurses;
+    }
+
     public int indexOfRoom(int numberOfRoom, String sectionName) {
         int result = -1;
         for (int i = 0; i < rooms.size(); i++) {
@@ -86,18 +90,43 @@ public class Hospital {
         return result;
     }
 
-    public int indexOfPatient (int id) {
+    // For Searching Doctors, Nurses, Patients
+    public int indexOfPND(int id, int choice) {
         int index = -1;
-        for (int i = 0; i < patients.size(); i++) {
-            if (id == patients.get(i).getId()) {
-                index = i;
+        switch (choice) {
+        // For Doctor
+            case 1:
+                for (int i = 0; i < doctors.size(); i++) {
+                    if (id == doctors.get(i).getPersonnelID()) {
+                        index = i;
+                        break;
+                    }
+                }
                 break;
-            }
-        }
-        return index;
-    }
+            // For Nurse
+            case 2:
+                for (int i = 0; i < nurses.size(); i++) {
+                    if (id == nurses.get(i).getPersonnelID()) {
+                        index = i;
+                        break;
+                    }
+                }
+                break;
+            // For Patient
+            case 3:
+                for (int i = 0; i < patients.size(); i++) {
+                    if (id == patients.get(i).getId()) {
+                        index = i;
+                        break;
+                    }
+                }
+                break;
 
-    public ArrayList<Nurse> getNurses() {
-        return nurses;
+            default:
+                System.out.println("Wrong Input");
+                break;
+        }
+
+        return index;
     }
 }
