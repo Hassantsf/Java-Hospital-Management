@@ -17,6 +17,14 @@ public class Doctor {
         this.personnelID = personnelID;
     }
 
+    public int getPersonnelID() {
+        return personnelID;
+    }
+
+    public void setPersonnelID(int personnelID) {
+        this.personnelID = personnelID;
+    }
+
     public void newDoctor(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter name: ");
@@ -53,25 +61,17 @@ public class Doctor {
         hospital.addDoctor(doctor);
     }
 
-    public String toString() {
-        String store = "Patient IDs: \n";
-        for (int i = 0; i < patientIDs.size(); i++) {
-            store += patientIDs.get(i) + " ";
-        }
-
-        for (int i = 0; i < patientIDs.size(); i++) {
-            store += shifts.get(i) + " ";
-        }
-        return "Doctor:\n" +
+    public void doctorLog() {
+        System.out.println("Doctor:\n" +
                 "name: '" + name + '\'' +
-                "Personnel ID: " + personnelID + '\'' + store;
-    }
-
-    public int getPersonnelID() {
-        return personnelID;
-    }
-
-    public void setPersonnelID(int personnelID) {
-        this.personnelID = personnelID;
+                "Personnel ID: " + personnelID + '\'');
+        System.out.println("Patient IDs: \n");
+        for (int i = 0; i < patientIDs.size(); i++) {
+            System.out.println(patientIDs.get(i));
+        }
+        System.out.println("Shifts: ");
+        for (int i = 0; i < patientIDs.size(); i++) {
+            System.out.println(shifts.get(i));
+        }
     }
 }

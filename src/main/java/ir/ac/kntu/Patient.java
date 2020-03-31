@@ -187,5 +187,5 @@ public class Patient {
         hospital.addPatient(newPatient);
         return newPatient;
     }
-    
+
 }
