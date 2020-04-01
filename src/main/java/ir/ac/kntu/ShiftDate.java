@@ -40,7 +40,15 @@ public class ShiftDate {
         return new ShiftDate(hour, minute);
     }
 
-    public String toString() {
-        return  hour + ":" + minute;
+    public void shiftDateLog() {
+        System.out.println(hour + " : " + minute);
+    }
+
+    public void changeShiftDate(Shift shift, int choice) {
+        if (choice == 1) {
+            shift.setStartShift(addShiftDate());
+        } else {
+            shift.setEndShift(addShiftDate());
+        }
     }
 }

@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Hospital {
     private String name;
@@ -52,7 +53,7 @@ public class Hospital {
     }
 
     public void addRoom (Room newRoom) {
-        getRooms().add(newRoom);
+        rooms.add(newRoom);
         System.out.println("Your Room add to data base successfully!");
     }
 
@@ -62,7 +63,7 @@ public class Hospital {
     }
 
     public void addNurse (Nurse newNurse) {
-        nurses.add(newNurse);
+        getNurses().add(newNurse);
         System.out.println("Your Nurse add to data base successfully!");
     }
 
@@ -96,8 +97,8 @@ public class Hospital {
         switch (choice) {
         // For Doctor
             case 1:
-                for (int i = 0; i < doctors.size(); i++) {
-                    if (id == doctors.get(i).getPersonnelID()) {
+                for (int i = 0; i < getDoctors().size(); i++) {
+                    if (id == getDoctors().get(i).getPersonnelID()) {
                         index = i;
                         break;
                     }
@@ -105,8 +106,8 @@ public class Hospital {
                 break;
             // For Nurse
             case 2:
-                for (int i = 0; i < nurses.size(); i++) {
-                    if (id == nurses.get(i).getPersonnelID()) {
+                for (int i = 0; i < getNurses().size(); i++) {
+                    if (id == getNurses().get(i).getPersonnelID()) {
                         index = i;
                         break;
                     }
@@ -120,6 +121,7 @@ public class Hospital {
                         break;
                     }
                 }
+                System.out.println(1);
                 break;
 
             default:
@@ -128,5 +130,71 @@ public class Hospital {
         }
 
         return index;
+    }
+
+    public String changeString(String placeHolder) {
+        Scanner sc = new Scanner(System.in);
+        String input = new String();
+        System.out.println("Please Enter " + placeHolder);
+        input = sc.nextLine();
+        return input;
+    }
+
+
+    public int changeInt(String placeHolder) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please Enter " + placeHolder);
+        int input = sc.nextInt();
+        return input;
+    }
+    public ArrayList<Integer> changePatientIDs(Doctor doctor) {
+        int indexOfDoctor = getDoctors().indexOf(doctor);
+        ArrayList<Integer> copyId = new ArrayList<>(getDoctors().get(indexOfDoctor).getPatientIDs());
+        if (copyId.size() == 0) {
+            System.out.println("There Is No Patient in Our Database!\nPlease Create It First!");
+            return null;
+        }
+        Scanner sc = new Scanner(System.in);
+        int oldId, newId, indexOfPatient;
+        System.out.println("Enter The Patient's ID Which Do You Want to Change");
+        oldId = sc.nextInt();
+        indexOfPatient = getDoctors().get(indexOfDoctor).getPatientIDs().indexOf(oldId);
+        if (indexOfPatient >= 0) {
+            System.out.println("The Patient Found!");
+            System.out.println("Enter New ID: ");
+            newId = sc.nextInt();
+            copyId.set(indexOfPatient, newId);
+            doctor.setPatientIDs(copyId);
+            System.out.println("Your Patient ID Changed Successfully!");
+        } else {
+            System.out.println("Your ID Isn't in Our Database, Please Try Again!");
+        }
+        return copyId;
+    }
+
+
+
+
+
+    public void registerHumanName(int id,String name,int choice) {
+        switch (choice) {
+            case 1:
+                getDoctors().get(indexOfPND(id, 1)).setName(name);
+                System.out.println("Doctor Name Has been Changed Successfully");
+                break;
+
+            case 2:
+                getNurses().get(indexOfPND(id, 2)).setName(name);
+                System.out.println("Nurse Name Has been Changed Successfully");
+                break;
+            case 3:
+                patients.get(indexOfPND(id, 3)).setName(name);
+                System.out.println("Nurse Name Has been Changed Successfully");
+                break;
+        }
+    }
+
+    public ArrayList<Doctor> getDoctors() {
+        return doctors;
     }
 }

@@ -8,11 +8,19 @@ public class Main {
 
     public static void main(String[] args) {
         Hospital ht = new Hospital();
-        Room a = new Room();
-        a = a.newRoom(ht, "icu");
-        System.out.println(a);
-        Nurse s = new Nurse();
-        s.newNurse(ht);
-        ht.getNurses().get(0).nurseLog();
+        Patient b = new Patient();
+        b = b.newPatient(ht);
+        ht.addPatient(b);
+        ht.getPatients().get(0).patientlog();;
+        Doctor a = new Doctor();
+        a = a.newDoctor(ht);
+        ht.addDoctor(a);
+//        Doctor b = new Doctor();
+//        b = b.newDoctor(ht);
+//        ht.addDoctor(b);
+        ht.getDoctors().get(0).doctorLog();
+//        ht.getDoctors().get(1).doctorLog();
+        ht.getDoctors().get(0).changeDoctor(ht);
+        ht.getDoctors().get(0).doctorLog();
     }
 }

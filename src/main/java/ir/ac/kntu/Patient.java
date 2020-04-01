@@ -4,8 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Patient {
-    private String firstName = null;
-    private String lastName = null;
+    private String name = null;
     private int id = 0;
     private String section = "inner";
     private String disease = null;
@@ -19,10 +18,9 @@ public class Patient {
 
     public Patient() {}
 
-    public Patient(String firstName, String lastName, String section, String disease, String typeOfApply,
+    public Patient(String name, String section, String disease, String typeOfApply,
                    String insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+
         this.id = id;
         this.section = section;
         this.disease = disease;
@@ -35,20 +33,12 @@ public class Patient {
         this.doctorID = doctorID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -131,40 +121,37 @@ public class Patient {
         this.doctorID = doctorID;
     }
 
-    public String toString() {
-        return "Patient: \n" +
-                "firstName = '" + firstName + '\'' +
-                " lastName = '" + lastName + '\'' +
+    public void patientlog() {
+        System.out.println("Patient: \n" +
+                "name = '" + name + '\'' +
                 " id = " + id +
                 " section = '" + section + '\'' +
-                " disease = '" + disease + "\'\n" +
-                " typeOfApply = '" + typeOfApply + '\'' +
+                " disease = '" + disease + '\'' +
+                " typeOfApply = '" + typeOfApply + "\'\n" +
                 " confineDate = '" + confineDate + '\'' +
                 " gender = '" + (gender ? "male" : "female") + '\'' +
                 " age = " + age +
                 " caseNumber = " + caseNumber +
                 " insurance = '" + insurance + '\'' +
-                " doctor = " + doctorID + '\'';
+                " doctor = " + doctorID + '\'');
     }
 
     public Patient newPatient(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
-        String[] strStore = new String[6];
+        String[] strStore = new String[5];
         int[] intStore = new int[4];
         boolean boolStore;
         String junk;
-        System.out.println("Enter first name: ");
+        System.out.println("Enter name: ");
         strStore[0] = sc.nextLine();
-        System.out.println("Enter last name: ");
-        strStore[1] = sc.nextLine();
         System.out.println("Enter section: ");
-        strStore[2] = sc.nextLine();
+        strStore[1] = sc.nextLine();
         System.out.println("Enter disease: ");
-        strStore[3] = sc.nextLine();
+        strStore[2] = sc.nextLine();
         System.out.println("Enter type of apply: ");
-        strStore[4] = sc.nextLine();
+        strStore[3] = sc.nextLine();
         System.out.println("Enter insurance: ");
-        strStore[5] = sc.nextLine();
+        strStore[4] = sc.nextLine();
 
         System.out.println("Enter National ID: ");
         intStore[0] = sc.nextInt();
@@ -182,9 +169,8 @@ public class Patient {
         } else {
             boolStore = false;
         }
-        Patient newPatient = new Patient(strStore[0], strStore[1], strStore[2], strStore[3], strStore[4], strStore[5]
+        Patient newPatient = new Patient(strStore[0], strStore[1], strStore[2], strStore[3], strStore[4]
                 , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore);
-        hospital.addPatient(newPatient);
         return newPatient;
     }
 
