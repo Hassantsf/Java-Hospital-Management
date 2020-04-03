@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Date a = new Date();
-        System.out.println(a);
-        DateTools newTool = new DateTools();
-        newTool.changeDate(a);
-        System.out.println(a);
+        Hospital ht = new Hospital();
+        Room a = new Room();
+        a = a.newRoom("icu");
+        ht.addRoom(a);
+        ht.getRooms().get(0);
+        a.getFacilities().get(0).changeFacility(ht);
+        a.getFacilities().get(0).facilityLog();
     }
 }

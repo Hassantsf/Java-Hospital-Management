@@ -90,13 +90,11 @@ public class Doctor {
         System.out.println("Changing Doctor Information: ");
         System.out.println("Which Part Do You Want to Change: (Once You're Done Press 0)");
         Shift tool = new Shift();
-        System.out.println("1) Name");
-        System.out.println("2) Patients ID");
-        System.out.println("3) Shifts");
-        System.out.println("4) Personnel ID");
         Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
+        int choice = 1;
         while (choice !=0 ) {
+            System.out.println("1) Name | 2) Patients ID | 3) Shifts | 4) Personnel ID");
+            choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     setName(hospital.changeString("New Name: "));

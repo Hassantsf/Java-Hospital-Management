@@ -50,7 +50,7 @@ public class Room {
         this.sectionName = sectionName;
     }
 
-    public Room newRoom(Hospital hospital, String sectionName) {
+    public Room newRoom(String sectionName) {
         int number;
         boolean newState;
         Scanner sc = new Scanner(System.in);
@@ -61,7 +61,7 @@ public class Room {
         int choice = sc.nextInt();
         ArrayList<Facility> facilities = new ArrayList<>();
         if (choice == 1) {
-            System.out.println("How many rooms do you want to add: ");
+            System.out.println("How many facilities do you want to add: ");
             int n = sc.nextInt();
             for (int i = 0; i < n; i++) {
                 Facility newFacility = new Facility();
@@ -72,7 +72,6 @@ public class Room {
         System.out.println("Your room by default is available!");
         newState = true;
         Room room = new Room(number, facilities, newState, sectionName);
-        hospital.addRoom(room);
         return room;
     }
 
@@ -86,5 +85,19 @@ public class Room {
             result += facilities.toString() + '\n';
         }
         return result;
+    }
+
+    public void addFacility(Facility newFacility) {
+        facilities.add(newFacility);
+    }
+
+    public int indexOfFacility(int numberOfFacility) {
+        int index = -1;
+        for (int i = 0; i < facilities.size(); i++) {
+            if (facilities.get(i).getNumber() == numberOfFacility) {
+                index = i;
+            }
+        }
+        return index;
     }
 }

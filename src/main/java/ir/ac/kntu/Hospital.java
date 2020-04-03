@@ -50,7 +50,7 @@ public class Hospital {
     }
 
     public void addRoom(Room newRoom) {
-        rooms.add(newRoom);
+        getRooms().add(newRoom);
         System.out.println("Your Room add to data base successfully!");
     }
 
@@ -79,8 +79,8 @@ public class Hospital {
 
     public int indexOfRoom(int numberOfRoom, String sectionName) {
         int result = -1;
-        for (int i = 0; i < rooms.size(); i++) {
-            if (rooms.get(i).getSectionName().equals(sectionName) && rooms.get(i).getNumber() == numberOfRoom) {
+        for (int i = 0; i < getRooms().size(); i++) {
+            if (getRooms().get(i).getSectionName().equals(sectionName) && getRooms().get(i).getNumber() == numberOfRoom) {
                 result = i;
                 break;
             }
@@ -148,7 +148,7 @@ public class Hospital {
     public boolean changeBool(String placeHolder) {
         Scanner sc = new Scanner(System.in);
         String[] list = placeHolder.split(" ");
-        System.out.println("Change " + list[0] + "by Pressing 1) " + list[0] + " 2) " + list[1]);
+        System.out.println("Change " + list[0] + " by Pressing 1) " + list[1] + " 2) " + list[2]);
         int input = sc.nextInt();
         while (input < 1 || input > 2) {
             System.out.println("Try Again!");

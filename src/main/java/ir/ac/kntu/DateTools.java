@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 class DateTools {
     public void changeDate(Date oldDate) {
+        System.out.println("Changing Date!\n");
         Scanner sc = new Scanner(System.in);
         int year = 1970 , month = 0, day = 1;
         while (!isValidDate(year, month, day)) {

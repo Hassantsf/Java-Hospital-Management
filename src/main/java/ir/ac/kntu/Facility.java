@@ -51,12 +51,12 @@ public class Facility {
         this.lastCheckUp = lastCheckUp;
     }
 
-    public String toString() {
-        return "Facility:\n" +
+    public void facilityLog() {
+        System.out.println("Facility:\n" +
                 "type = '" + type + '\'' +
                 " number = " + number +
                 " state = " + (state ? "'Available'" : "Unavailable") +
-                " lastCheckUp = " + lastCheckUp;
+                " lastCheckUp = " + lastCheckUp);
     }
 
     public Facility newFacility() {
@@ -75,14 +75,18 @@ public class Facility {
         return new Facility(newType, number, true, new Date());
     }
 
-    public void changeFacility(Hospital hospital, Room room) {
+    public void changeFacility(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Changing Facility!");
         System.out.println("Which Part Do You Want to Change: (Once You're Done Press 0)");
-        int choice = sc.nextInt();
+        int choice = 1;
         while (choice != 0) {
-            System.out.println("1) Type | 2) Number | 3) Accessibility |4) Last CheckUp");
+            System.out.println("1) Type | 2) Number | 3) Accessibility | 4) Last CheckUp");
+            choice = sc.nextInt();
+            System.out.println("New Changing:");
             switch (choice) {
+                case 0:
+                    break;
                 case 1: {
                     type = hospital.changeString("New Type: ");
                     System.out.println("Your Change Was Successful!");
@@ -99,10 +103,13 @@ public class Facility {
                     break;
                 }
                 case 4: {
-                    type = hospital.changeString("New Type: ");
-                    System.out.println("Your Change Was Successful!");
+                    DateTools help = new DateTools();
+                    help.changeDate(lastCheckUp);
                     break;
                 }
+                default:
+                    System.out.println("Wrong Input!");
+                    break;
             }
         }
     }

@@ -44,7 +44,8 @@ public class Section {
             int n = sc.nextInt();
             for (int i = 0; i < n; i++) {
                 Room newRoom = new Room();
-                newRoom = newRoom.newRoom(hospital, name);
+                newRoom = newRoom.newRoom(name);
+                hospital.addRoom(newRoom);
                 rooms.add(newRoom);
             }
         }
