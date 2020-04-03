@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import javax.script.ScriptContext;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,6 +40,7 @@ public class Hospital {
         this.rooms = rooms;
     }
 
+    // Add Part
     public void addPatient(Patient newPatient) {
         patients.add(newPatient);
         System.out.println("Your Patient add to data base successfully!");
@@ -62,6 +64,77 @@ public class Hospital {
     public void addNurse(Nurse newNurse) {
         getNurses().add(newNurse);
         System.out.println("Your Nurse add to data base successfully!");
+    }
+    // Delete Part
+    public void deleteRoom() {
+        System.out.println("Deleting Room: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Number: ");
+        int number = sc.nextInt();
+        System.out.println("Enter Section Name: ");
+        String sectionName = sc.nextLine();
+        sectionName = sc.nextLine();
+        int index = indexOfRoom(number, sectionName);
+        if (index >= 0) {
+            rooms.remove(index);
+            System.out.println("Your Room Deleted Successfully!");
+        } else {
+            System.out.println("This Room Wasn't Register");
+        }
+    }
+
+    public void deletePND(int choice) {
+        System.out.print("Creating New ");
+        switch (choice) {
+            case 1:
+                System.out.println(" Doctor: ");
+                break;
+            case 2:
+                System.out.println(" Nurse: ");
+                break;
+            case 3:
+                System.out.println(" Patient: ");
+                break;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter ID: ");
+        int id = sc.nextInt();
+        int index = -1;
+        switch (choice) {
+            // For Doctor
+            case 1: {
+              index = indexOfPND(id, choice);
+              if (index >= 0) {
+                  doctors.remove(index);
+                  System.out.println("Your Doctor Deleted Successfully!");
+              } else {
+                  System.out.println("There isn't This Doctor in Our Records");
+              }
+              break;
+            }
+            // For Nurse
+            case 2: {
+              index = indexOfPND(id, choice);
+              if (index >= 0) {
+                  nurses.remove(index);
+                  System.out.println("Your Doctor Deleted Successfully!");
+              } else {
+                  System.out.println("There isn't This Doctor in Our Records");
+              }
+              break;
+            }
+            // For Patient
+            case 3: {
+              index = indexOfPND(id, choice);
+              if (index >= 0) {
+                  patients.remove(index);
+                  System.out.println("Your Doctor Deleted Successfully!");
+              } else {
+                  System.out.println("There isn't This Doctor in Our Records");
+              }
+              break;
+            }
+        }
     }
 
     public ArrayList<Patient> getPatients() {

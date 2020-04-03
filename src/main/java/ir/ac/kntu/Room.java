@@ -9,7 +9,8 @@ public class Room {
     private boolean state = false;
     private String sectionName;
 
-    public Room() {}
+    public Room() {
+    }
 
     public Room(int number, ArrayList<Facility> facilities, boolean state, String sectionName) {
         this.number = number;
@@ -75,16 +76,18 @@ public class Room {
         return room;
     }
 
-    public String toString() {
-        String result = "";
+    public void changeRoom(Hospital hospital) {
+
+    }
+
+    public void roomLog() {
         System.out.println("Room\n" +
                 "number = " + number +
                 "  state = " + (state ? "Available" : "Unavailable") +
                 "  sectionName = '" + sectionName + "\'\n" + "Facilities: ");
         for (int i = 0; i < facilities.size(); i++) {
-            result += facilities.toString() + '\n';
+            facilities.get(i).facilityLog();
         }
-        return result;
     }
 
     public void addFacility(Facility newFacility) {

@@ -75,7 +75,7 @@ public class Facility {
         return new Facility(newType, number, true, new Date());
     }
 
-    public void changeFacility(Hospital hospital) {
+    public Facility changeFacility(Hospital hospital) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Changing Facility!");
         System.out.println("Which Part Do You Want to Change: (Once You're Done Press 0)");
@@ -112,5 +112,6 @@ public class Facility {
                     break;
             }
         }
+        return this;
     }
 }
