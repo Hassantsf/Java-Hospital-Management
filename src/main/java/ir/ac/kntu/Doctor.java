@@ -108,6 +108,13 @@ public class Doctor {
                 case 3: {
                     int number = hospital.changeInt("The Number of Shift: ");
                     int index = tool.indexOfShift(shifts, number);
+                    if (index >= 0) {
+                        System.out.println("Your Shift Found!");
+                        tool.menuOfChangeShift(1);
+                        int newChoice = sc.nextInt();
+                        tool.changeShift(shifts.get(index), this, null, number, newChoice);
+                        System.out.println("Your Change Was Successful!");
+                    }
                     shifts.get(index).setNumberOfShift(number);
                     break;
                 }

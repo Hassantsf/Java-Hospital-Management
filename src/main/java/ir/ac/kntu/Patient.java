@@ -20,7 +20,7 @@ public class Patient {
 
     public Patient(String name, String section, String disease, String typeOfApply,
                    String insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
-
+        this.name = name;
         this.id = id;
         this.section = section;
         this.disease = disease;
@@ -137,6 +137,7 @@ public class Patient {
     }
 
     public Patient newPatient(Hospital hospital) {
+        System.out.println("Creating New Patient");
         Scanner sc = new Scanner(System.in);
         String[] strStore = new String[5];
         int[] intStore = new int[4];
@@ -162,7 +163,7 @@ public class Patient {
         System.out.println("Enter doctor ID: ");
         intStore[3] = sc.nextInt();
         System.out.println("Please enter the right number:");
-        System.out.println("1) Male 2)Female");
+        System.out.println("1) Male 2) Female");
         int choice = sc.nextInt();
         if (choice == 1) {
             boolStore = true;

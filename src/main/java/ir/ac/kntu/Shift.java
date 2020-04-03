@@ -97,7 +97,7 @@ public class Shift {
         System.out.println("Day of Week: " + getDayOfWeek());
     }
 
-    public void changeShift(Shift shift, Doctor doctor,int number, int choice) {
+    public void changeShift(Shift shift, Doctor doctor,Nurse nurse, int number, int choice) {
         int indexOfShift = doctor.getShifts().indexOf(shift);
         Hospital hospital = new Hospital();
         ShiftDate newDate = new ShiftDate();
@@ -122,10 +122,20 @@ public class Shift {
     public int indexOfShift(ArrayList<Shift> shifts, int number) {
         int index = -1;
         for (int i = 0; i < shifts.size(); i++) {
-            if (shifts.get(i).getNumberOfShift() == number) {
+            if (shifts.get(i).numberOfShift == number) {
                 index = i;
             }
         }
         return index;
+    }
+    public void menuOfChangeShift(int choice) {
+        // For Doctor
+        if (choice == 1) {
+            System.out.println("Which Part Do You Want to Change: ");
+            System.out.println("1) Start of Shift");
+            System.out.println("2) End of Shift");
+            System.out.println("3) Number of Shift");
+            System.out.println("4) Day of Shift");
+        }
     }
 }

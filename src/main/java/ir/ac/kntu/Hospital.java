@@ -27,16 +27,13 @@ public class Hospital {
         this.doctors = doctors;
     }
 
-
     public void setNurses(ArrayList<Nurse> nurses) {
         nurses = nurses;
     }
 
-
     public void setPatients(ArrayList<Patient> patients) {
         this.patients = patients;
     }
-
 
     public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
@@ -52,17 +49,17 @@ public class Hospital {
         System.out.println("Your Doctor add to data base successfully!");
     }
 
-    public void addRoom (Room newRoom) {
+    public void addRoom(Room newRoom) {
         rooms.add(newRoom);
         System.out.println("Your Room add to data base successfully!");
     }
 
-    public void addSection (Section newSection) {
+    public void addSection(Section newSection) {
         sections.add(newSection);
         System.out.println("Your Section add to data base successfully!");
     }
 
-    public void addNurse (Nurse newNurse) {
+    public void addNurse(Nurse newNurse) {
         getNurses().add(newNurse);
         System.out.println("Your Nurse add to data base successfully!");
     }
@@ -95,7 +92,7 @@ public class Hospital {
     public int indexOfPND(int id, int choice) {
         int index = -1;
         switch (choice) {
-        // For Doctor
+            // For Doctor
             case 1:
                 for (int i = 0; i < getDoctors().size(); i++) {
                     if (id == getDoctors().get(i).getPersonnelID()) {
@@ -147,6 +144,24 @@ public class Hospital {
         int input = sc.nextInt();
         return input;
     }
+
+    public boolean changeBool(String placeHolder) {
+        Scanner sc = new Scanner(System.in);
+        String[] list = placeHolder.split(" ");
+        System.out.println("Change " + list[0] + "by Pressing 1) " + list[0] + " 2) " + list[1]);
+        int input = sc.nextInt();
+        while (input < 1 || input > 2) {
+            System.out.println("Try Again!");
+            input = sc.nextInt();
+        }
+
+        if (input == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public ArrayList<Integer> changePatientIDs(Doctor doctor) {
         int indexOfDoctor = getDoctors().indexOf(doctor);
         ArrayList<Integer> copyId = new ArrayList<>(getDoctors().get(indexOfDoctor).getPatientIDs());
@@ -173,10 +188,7 @@ public class Hospital {
     }
 
 
-
-
-
-    public void registerHumanName(int id,String name,int choice) {
+    public void registerHumanName(int id, String name, int choice) {
         switch (choice) {
             case 1:
                 getDoctors().get(indexOfPND(id, 1)).setName(name);
