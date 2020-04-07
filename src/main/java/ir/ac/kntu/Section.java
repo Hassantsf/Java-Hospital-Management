@@ -2,25 +2,43 @@ package ir.ac.kntu;
 
 import java.util.Scanner;
 
-public enum Section {
-    ICU,
-    EMERGENCY,
-    INTERNAL;
+public class Section {
+    private Name name;
 
-    Section
+    public Name getName() {
+        return name;
+    }
 
-    public Section chooseSection() {
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Section() {
+        this(Name.INTERNAL);
+    }
+
+    public Section(Name name) {
+        this.name = name;
+    }
+
+    public void chooseSection() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Choose section:");
         System.out.println("1) ICU 2) Emergency 3) Internal");
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                return ICU;
+                name = Name.ICU;
             case 2:
-                return EMERGENCY;
+                name = Name.EMERGENCY;
             case 3:
-                return INTERNAL;
+                name = Name.INTERNAL;
         }
     }
+}
+
+enum Name {
+    ICU,
+    EMERGENCY,
+    INTERNAL;
 }
