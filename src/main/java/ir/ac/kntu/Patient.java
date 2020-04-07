@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Patient {
     private String name = null;
     private int id = 0;
-    private String section = "inner";
+    private Section section = Section.DEFAULT;
     private String disease = null;
     private String typeOfApply = "ordinary";
     private Date confineDate = new Date();
@@ -18,7 +18,7 @@ public class Patient {
 
     public Patient() {}
 
-    public Patient(String name, String section, String disease, String typeOfApply,
+    public Patient(String name, Section section, String disease, String typeOfApply,
                    String insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
         this.name = name;
         this.id = id;
@@ -49,11 +49,11 @@ public class Patient {
         this.id = id;
     }
 
-    public String getSection() {
+    public Section getSection() {
         return section;
     }
 
-    public void setSection(String section) {
+    public void setSection(Section section) {
         this.section = section;
     }
 
@@ -146,13 +146,14 @@ public class Patient {
         System.out.println("Enter name: ");
         strStore[0] = sc.nextLine();
         System.out.println("Enter section: ");
-        strStore[1] = sc.nextLine();
+        Section section = Section.DEFAULT;
+        section = section.chooseSection();
         System.out.println("Enter disease: ");
-        strStore[2] = sc.nextLine();
+        strStore[1] = sc.nextLine();
         System.out.println("Enter type of apply: ");
-        strStore[3] = sc.nextLine();
+        strStore[2] = sc.nextLine();
         System.out.println("Enter insurance: ");
-        strStore[4] = sc.nextLine();
+        strStore[3] = sc.nextLine();
 
         System.out.println("Enter National ID: ");
         intStore[0] = sc.nextInt();
@@ -170,7 +171,7 @@ public class Patient {
         } else {
             boolStore = false;
         }
-        Patient newPatient = new Patient(strStore[0], strStore[1], strStore[2], strStore[3], strStore[4]
+        Patient newPatient = new Patient(strStore[0], section, strStore[1], strStore[2], strStore[3]
                 , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore);
         return newPatient;
     }
