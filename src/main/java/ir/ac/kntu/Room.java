@@ -109,7 +109,7 @@ public class Room {
         boolean vip;
         Facility tv = new Facility();
         Facility phone = new Facility();
-        Section section = new Section();
+        Section section = Section.INTERNAL;
         Scanner sc = new Scanner(System.in);
         System.out.println("Creating new Room: \n");
 
@@ -164,7 +164,7 @@ public class Room {
         System.out.println("Enter Number: ");
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
-        Section section = new Section();
+        Section section = Section.INTERNAL;
         section.chooseSection();
         int index = hospital.indexOfRoom(number, section);
         if (index >= 0) {

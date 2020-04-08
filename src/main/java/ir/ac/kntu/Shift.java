@@ -79,7 +79,6 @@ public class Shift {
     }
 
     public void changeShift(Shift shift, Doctor doctor,Nurse nurse, int number, int choice) {
-        int indexOfShift = doctor.getShifts().indexOf(shift);
         Hospital hospital = new Hospital();
         ShiftDate newDate = new ShiftDate();
         switch (choice) {

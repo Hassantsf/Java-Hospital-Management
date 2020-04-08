@@ -199,7 +199,7 @@ public class Hospital {
     //
     public ArrayList<Integer> changePatientIDs(Doctor doctor) {
         int indexOfDoctor = doctors.indexOf(doctor);
-        ArrayList<Integer> copyId = new ArrayList<>(doctors.get(indexOfDoctor).getPatientIDs());
+        ArrayList<Integer> copyId = new ArrayList<Integer>(doctors.get(indexOfDoctor).getAllPatientIDs());
         if (copyId.size() == 0) {
             System.out.println("There Is No Patient in Our Database!\nPlease Create It First!");
             return null;
@@ -208,7 +208,7 @@ public class Hospital {
         int oldId, newId, indexOfPatient;
         System.out.println("Enter The Patient's ID Which Do You Want to Change");
         oldId = sc.nextInt();
-        indexOfPatient = doctors.get(indexOfDoctor).getPatientIDs().indexOf(oldId);
+        indexOfPatient = doctors.get(indexOfDoctor).getAllPatientIDs().indexOf(oldId);
         if (indexOfPatient >= 0) {
             System.out.println("The Patient Found!");
             System.out.println("Enter New ID: ");
@@ -227,7 +227,7 @@ public class Hospital {
     // New & Change String & Int & Bool Fields
     public String changeString(String placeHolder) {
         Scanner sc = new Scanner(System.in);
-        String input = new String();
+        String input;
         System.out.println("Please Enter " + placeHolder);
         input = sc.nextLine();
         return input;
@@ -262,7 +262,7 @@ public class Hospital {
         int counterScreen = 0;
         for (int i = 0; i < patients.size(); i++) {
             if (patients.get(i).getSection() == section) {
-                patients.get(i).patientlog();
+                patients.get(i).patientLog();
                 counterScreen++;
             }
             if (counterScreen % 2 ==0) {
@@ -281,9 +281,10 @@ public class Hospital {
             Room store = rooms.get(i);
             if (store.getSection() == section) {
                 System.out.println("Room: " + store.getNumber());
-                for (int j = 0; j < store.getFacilities().size(); j++) {
-                    store.getFacilities().get(j).facilityLog();
+                for (int j = 0; j < store.getAllBeds().size(); j++) {
+                    store.getAllBeds().get(j).facilityLog();
                 }
+                store.getCloset();
                 counterScreen++;
             }
             if (counterScreen % 2 ==0) {

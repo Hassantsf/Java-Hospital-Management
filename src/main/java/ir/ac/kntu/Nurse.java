@@ -69,7 +69,7 @@ public class Nurse {
                 String sectionName;
                 System.out.println("Enter The Number of Room: ");
                 roomNumber = sc.nextInt();
-                Section section = Section.DEFAULT;
+                Section section = Section.INTERNAL;
                 section = section.chooseSection();
                 if (hospital.indexOfRoom(roomNumber, section) >= 0) {
                     newRooms.add(roomNumber);
