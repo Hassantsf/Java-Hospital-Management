@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Facility {
-    private String type = null;
+    private Type type;
     private int number = 0;
     private boolean state = false;
     private Date lastCheckUp = new Date();
@@ -12,45 +12,48 @@ public class Facility {
     public Facility() {
     }
 
-    public Facility(String type, int number, boolean state, Date lastCheckUp) {
+    public Facility(Type type, int number, boolean state, Date lastCheckUp) {
         this.type = type;
         this.number = number;
         this.state = state;
         this.lastCheckUp = lastCheckUp;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
+    // Setters
+    public void setType(Type type) {
         this.type = type;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public void setNumber(int number) {
         this.number = number;
     }
 
-    public boolean isState() {
-        return state;
-    }
-
     public void setState(boolean state) {
         this.state = state;
-    }
-
-    public Date getLastCheckUp() {
-        return lastCheckUp;
     }
 
     public void setLastCheckUp(Date lastCheckUp) {
         this.lastCheckUp = lastCheckUp;
     }
 
+    // Getters
+    public Type getType() {
+        return type;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public Date getLastCheckUp() {
+        return lastCheckUp;
+    }
+
+    // View & New & Edit Section
     public void facilityLog() {
         System.out.println("Facility:\n" +
                 "type = '" + type + '\'' +
@@ -59,15 +62,12 @@ public class Facility {
                 " lastCheckUp = " + lastCheckUp);
     }
 
-    public Facility newFacility() {
+    public Facility newFacility(Type newType) {
         Scanner sc = new Scanner(System.in);
-        String newType;
         int number;
         Date newCheckUp = new Date();
         boolean state;
-        System.out.println("Creating New Facility\n");
-        System.out.println("Enter Type Of Facility:");
-        newType = sc.nextLine();
+        System.out.println("Creating New " + newType + "\n");
         System.out.println("Enter The Facility number: ");
         number = sc.nextInt();
         System.out.println("The State of Facility is by default Healthy");
@@ -81,32 +81,31 @@ public class Facility {
         System.out.println("Which Part Do You Want to Change: (Once You're Done Press 0)");
         int choice = 1;
         while (choice != 0) {
-            System.out.println("1) Type | 2) Number | 3) Accessibility | 4) Last CheckUp");
+            System.out.println("1) Number | 2) Accessibility | 3) Last CheckUp");
             choice = sc.nextInt();
             System.out.println("New Changing:");
             switch (choice) {
                 case 0:
                     break;
+
                 case 1: {
-                    type = hospital.changeString("New Type: ");
-                    System.out.println("Your Change Was Successful!");
-                    break;
-                }
-                case 2: {
                     number = hospital.changeInt("New Number: ");
                     System.out.println("Your Change Was Successful!");
                     break;
                 }
-                case 3: {
+
+                case 2: {
                     state = hospital.changeBool("Availability Available Unavailable");
                     System.out.println("Your Change Was Successful!");
                     break;
                 }
-                case 4: {
+
+                case 3: {
                     DateTools help = new DateTools();
                     help.changeDate(lastCheckUp);
                     break;
                 }
+
                 default:
                     System.out.println("Wrong Input!");
                     break;

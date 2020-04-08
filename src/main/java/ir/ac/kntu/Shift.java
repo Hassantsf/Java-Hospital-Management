@@ -5,43 +5,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shift {
+    // Fields
     private ShiftDate startShift = new ShiftDate();
     private ShiftDate endShift = new ShiftDate();
     private int numberOfShift = 0;
-    private int day = 1;
+    private Week day = Week.FRIDAY;
 
+    // Constructors
     public Shift() {}
 
-    public Shift(ShiftDate startShift, ShiftDate endShift, int day, int numberOfShift) {
+    public Shift(ShiftDate startShift, ShiftDate endShift, Week day, int numberOfShift) {
         this.startShift = startShift;
         this.endShift = endShift;
         this.day = day;
         this.numberOfShift = numberOfShift;
     }
 
-    public void setDay(int day) {
+    public void setDay(Week day) {
         this.day = day;
-    }
-
-    public String getDayOfWeek() {
-        switch (day) {
-            case 1:
-                return "Sat";
-            case 2:
-                return "Sun";
-            case 3:
-                return "Mon";
-            case 4:
-                return "Tue";
-            case 5:
-                return "Wed";
-            case 6:
-                return "Thu";
-            case 7:
-                return "Fri";
-            default:
-                return "";
-        }
     }
 
     public ShiftDate getStartShift() {
@@ -70,7 +51,8 @@ public class Shift {
 
     public Shift newShift() {
         Scanner sc = new Scanner(System.in);
-        int day, numberOfShift;
+        int numberOfShift;
+        Week day = Week.SATURDAY;
         ShiftDate start = new ShiftDate();
         System.out.println("Start of shift: ");
         start = start.addShiftDate();
@@ -79,8 +61,7 @@ public class Shift {
         System.out.println("End of shift: ");
         end = end.addShiftDate();
 
-        System.out.println("Enter Day of Week: (1-7)");
-        day = sc.nextInt();
+        day = day.chooseWeek();
 
         System.out.println("Enter Number of Shift:");
         numberOfShift = sc.nextInt();
@@ -94,7 +75,7 @@ public class Shift {
         System.out.println("End of Shift: ");
         endShift.shiftDateLog();
         System.out.println("Number of Shift: " + numberOfShift);
-        System.out.println("Day of Week: " + getDayOfWeek());
+        System.out.println("Day of Week: " + day);
     }
 
     public void changeShift(Shift shift, Doctor doctor,Nurse nurse, int number, int choice) {
@@ -103,30 +84,28 @@ public class Shift {
         ShiftDate newDate = new ShiftDate();
         switch (choice) {
             case 1:
-                newDate.changeShiftDate(shift, 1);
+                newDate.changeShiftDate(this, 1);
                 break;
             case 2:
-                newDate.changeShiftDate(shift, 2);
+                newDate.changeShiftDate(this, 2);
                 break;
             case 3:
-                shift.setNumberOfShift(hospital.changeInt("Number of The Shift: "));
+                numberOfShift = hospital.changeInt("Number of The Shift: ");
                 break;
             case 4:
-                shift.setDay(hospital.changeInt("Number of Day: (1 - 7)"));
+                day = day.chooseWeek();
                 break;
         }
-        doctor.getShifts().set(indexOfShift, shift);
         System.out.println("Your Shift Changed Successfully");
     }
 
     public int indexOfShift(ArrayList<Shift> shifts, int number) {
-        int index = -1;
         for (int i = 0; i < shifts.size(); i++) {
             if (shifts.get(i).numberOfShift == number) {
-                index = i;
+                return i;
             }
         }
-        return index;
+        return -1;
     }
     public void menuOfChangeShift(int choice) {
         // For Doctor

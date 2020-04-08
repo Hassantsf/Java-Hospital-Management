@@ -51,7 +51,9 @@ public class Doctor {
             if (indexOfPatient >= 0) {
                 IDs.add(id);
                 System.out.println("The patient added successfully!");
-                hospital.getPatients().get(indexOfPatient).setDoctorID(personnelID);
+                ArrayList<Patient> patients = hospital.getAllPatients();
+                patients.get(indexOfPatient).setDoctorID(personnelID);
+                hospital.setPatients(patients);
             } else {
                 System.out.println("Your patient haven't been found!");
                 System.out.println("Create Patient first than try again!");
@@ -67,8 +69,7 @@ public class Doctor {
         }
 
         System.out.println("Your doctor was successfully created!");
-        Doctor doctor = new Doctor(name, IDs, shifts, personnelID);
-        return doctor;
+        return new Doctor(name, IDs, shifts, personnelID);
     }
 
     public void doctorLog() {
@@ -87,6 +88,7 @@ public class Doctor {
     }
 
     public void changeDoctor(Hospital hospital) {
+        int indexOfDoctor = hospital.indexOfPND(personnelID, 1);
         System.out.println("Changing Doctor Information: ");
         System.out.println("Which Part Do You Want to Change: (Once You're Done Press 0)");
         Shift tool = new Shift();
@@ -97,8 +99,7 @@ public class Doctor {
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    setName(hospital.changeString("New Name: "));
-                    hospital.registerHumanName(personnelID, getName(), 1);
+                    name = hospital.changeString("New Name: ");
                     break;
                 case 2:
                     patientIDs = hospital.changePatientIDs(this);
@@ -126,18 +127,19 @@ public class Doctor {
             System.out.println("New Changing: ");
             choice = sc.nextInt();
         }
+        hospital.registerDoctor(this, indexOfDoctor);
     }
 
-    public ArrayList<Integer> getPatientIDs() {
-        return patientIDs;
+    public ArrayList<Integer> getAllPatientIDs() {
+        return new ArrayList<Integer>(patientIDs);
     }
 
     public void setPatientIDs(ArrayList<Integer> patientIDs) {
         this.patientIDs = patientIDs;
     }
 
-    public ArrayList<Shift> getShifts() {
-        return shifts;
+    public ArrayList<Shift> getAllShifts() {
+        return new ArrayList<Shift>(shifts);
     }
 
     public void setShifts(ArrayList<Shift> shifts) {

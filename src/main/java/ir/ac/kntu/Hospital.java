@@ -9,6 +9,8 @@ public class Hospital {
     private String name;
     private String address;
     private int beds;
+    private int priceOfRoom = 0;
+    private int priceOfVipRoom = 0;
     private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
     private ArrayList<Nurse> nurses = new ArrayList<Nurse>();
     private ArrayList<Patient> patients = new ArrayList<Patient>();
@@ -104,6 +106,22 @@ public class Hospital {
         System.out.println("Your Room add to data base successfully!");
     }
 
+    // Change Items Section
+    public void registerRoom(Room room, int index) {
+        rooms.set(index, room);
+    }
+
+    public void registerDoctor(Doctor doctor, int index) {
+        doctors.set(index, doctor);
+    }
+
+    public void registerNurse(Nurse nurse, int index) {
+        nurses.set(index, nurse);
+    }
+
+    public void registerPatient(Patient patient, int index) {
+        patients.set(index, patient);
+    }
     // Delete Items Section
 
     // Delete Patient, Nurse and Doctor From Hospital

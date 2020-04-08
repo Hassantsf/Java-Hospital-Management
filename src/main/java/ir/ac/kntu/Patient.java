@@ -4,22 +4,24 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Patient {
+    // Fields
     private String name = null;
     private int id = 0;
-    private Section section = Section.DEFAULT;
+    private Section section = Section.INTERNAL;
     private String disease = null;
     private String typeOfApply = "ordinary";
     private Date confineDate = new Date();
     private boolean gender = true;
     private int age = 0;
     private int caseNumber = 0;
-    private String insurance = null;
+    private Insurance insurance;
     private int doctorID = 0;
 
+    // Constructors
     public Patient() {}
 
     public Patient(String name, Section section, String disease, String typeOfApply,
-                   String insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
+                   Insurance insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
         this.name = name;
         this.id = id;
         this.section = section;
@@ -105,11 +107,11 @@ public class Patient {
         this.caseNumber = caseNumber;
     }
 
-    public String getInsurance() {
+    public Insurance getInsurance() {
         return insurance;
     }
 
-    public void setInsurance(String insurance) {
+    public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
     }
 
@@ -121,7 +123,7 @@ public class Patient {
         this.doctorID = doctorID;
     }
 
-    public void patientlog() {
+    public void patientLog() {
         System.out.println("Patient: \n" +
                 "name = '" + name + '\'' +
                 " id = " + id +
@@ -132,28 +134,29 @@ public class Patient {
                 " gender = '" + (gender ? "male" : "female") + '\'' +
                 " age = " + age +
                 " caseNumber = " + caseNumber +
-                " insurance = '" + insurance + '\'' +
+                " insurance = '" + insurance.printInsurance() + '\'' +
                 " doctor = " + doctorID + '\'');
     }
 
     public Patient newPatient(Hospital hospital) {
         System.out.println("Creating New Patient");
         Scanner sc = new Scanner(System.in);
-        String[] strStore = new String[5];
+        String[] strStore = new String[3];
         int[] intStore = new int[4];
         boolean boolStore;
         String junk;
         System.out.println("Enter name: ");
         strStore[0] = sc.nextLine();
-        System.out.println("Enter section: ");
-        Section section = Section.DEFAULT;
+        Section section = Section.INTERNAL;
         section = section.chooseSection();
         System.out.println("Enter disease: ");
         strStore[1] = sc.nextLine();
         System.out.println("Enter type of apply: ");
         strStore[2] = sc.nextLine();
-        System.out.println("Enter insurance: ");
-        strStore[3] = sc.nextLine();
+
+        // Insurance Field
+        Insurance insurance = Insurance.SOCIAL_SUPPLEMENT;
+        insurance = insurance.chooseInsurance();
 
         System.out.println("Enter National ID: ");
         intStore[0] = sc.nextInt();
@@ -171,7 +174,7 @@ public class Patient {
         } else {
             boolStore = false;
         }
-        Patient newPatient = new Patient(strStore[0], section, strStore[1], strStore[2], strStore[3]
+        Patient newPatient = new Patient(strStore[0], section, strStore[1], strStore[2], insurance
                 , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore);
         return newPatient;
     }

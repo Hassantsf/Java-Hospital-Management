@@ -1,11 +1,9 @@
 package ir.ac.kntu;
 
-public enum FacilityType {
+public enum Type {
     BED,
     FRIDGE,
     CLOSET,
     TV,
     PHONE;
-
-    public void
 }
