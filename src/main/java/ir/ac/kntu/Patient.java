@@ -16,12 +16,13 @@ public class Patient {
     private int caseNumber = 0;
     private Insurance insurance;
     private int doctorID = 0;
+    private int room  = 0;
 
     // Constructors
     public Patient() {}
 
     public Patient(String name, Section section, Disease disease, Apply typeOfApply,
-                   Insurance insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender) {
+                   Insurance insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender, int room) {
         this.name = name;
         this.id = id;
         this.section = section;
@@ -33,6 +34,7 @@ public class Patient {
         this.caseNumber = caseNumber;
         this.insurance = insurance;
         this.doctorID = doctorID;
+        this.room = room;
     }
 
     public String getName() {
@@ -123,6 +125,14 @@ public class Patient {
         this.doctorID = doctorID;
     }
 
+    public void setRoom(int room) {
+        this.room = room;
+    }
+
+    public int getRoom() {
+        return room;
+    }
+
     public void patientLog() {
         System.out.println("Patient: \n" +
                 "name = '" + name + '\'' +
@@ -135,7 +145,8 @@ public class Patient {
                 " age = " + age +
                 " caseNumber = " + caseNumber +
                 " insurance = '" + insurance.printInsurance() + '\'' +
-                " doctor = " + doctorID + '\'');
+                " doctor = " + doctorID + '\'' +
+                "Room: " + room);
     }
 
     public Patient newPatient(Hospital hospital) {
@@ -176,8 +187,20 @@ public class Patient {
         } else {
             boolStore = false;
         }
+        System.out.println("Enter room number: ");
+        int room = sc.nextInt();
+
+        int indexOfRoom = hospital.indexOfRoom(room, section);
+        if (indexOfRoom >= 0) {
+            Room patientRoom = hospital.getAllRooms().get(indexOfRoom);
+            patientRoom.addPatient(intStore[0]);
+        } else {
+            System.out.println("This room is unavailable!");
+            room = 0;
+        }
+
         Patient newPatient = new Patient(name, section, disease, typeOfApply, insurance
-                , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore);
+                , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore, room);
         return newPatient;
     }
 

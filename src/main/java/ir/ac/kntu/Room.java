@@ -13,11 +13,13 @@ public class Room {
     private boolean state = false;
     private Section section;
     private boolean vip = false;
+    private ArrayList<Integer> patients = new ArrayList<>();
 
     public Room() {
     }
 
-    public Room(int number, ArrayList<Facility> beds, Facility closet, Facility fridge, Facility tv, Facility phone, boolean state, Section section, boolean vip) {
+    public Room(int number, ArrayList<Facility> beds, Facility closet, Facility fridge, Facility tv, Facility phone, boolean state, Section section, boolean vip,
+                ArrayList<Integer> patients) {
         setNumber(number);
         setBeds(beds);
         setCloset(closet);
@@ -27,6 +29,7 @@ public class Room {
         setState(state);
         setSection(section);
         setVip(vip);
+        setPatients(patients);
     }
 
     // Setters
@@ -65,6 +68,10 @@ public class Room {
     public void setVip(boolean vip) {
         this.vip = vip;
     }
+
+    public void setPatients(ArrayList<Integer> patients) {
+        this.patients = patients;
+    }
     // Getters
     public int getNumber() {
         return number;
@@ -102,8 +109,12 @@ public class Room {
         return vip;
     }
 
+    public ArrayList<Integer> getAllPatients() {
+        return patients;
+    }
+
     // Creating Room Menu
-    public Room newRoom() {
+    public Room newRoom(Hospital hospital) {
         int number;
         boolean newState;
         boolean vip;
@@ -153,9 +164,29 @@ public class Room {
             phone = null;
         }
 
+        // Patient Section
+        System.out.println("Do you want to add Patients right now: (1 : yes | 2 : no)");
+        choice = sc.nextInt();
+        ArrayList<Integer> patients = new ArrayList<Integer>();
+        if (choice == 1) {
+            System.out.println("How many patients do you want to add: ");
+            int n = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                System.out.println("Enter ID: ");
+                int id = sc.nextInt();
+                int index = hospital.indexOfPND(id, 3);
+                if (index >=0 ) {
+                    Patient patient = hospital.getAllPatients().get(index);
+                    patient.setRoom(number);
+                    hospital.registerPatient(patient, index);
+                    System.out.println("Your Patient added room successfully!");
+                }
+            }
+        }
+
         System.out.println("Your room by default is available!");
         newState = true;
-        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip);
+        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip, patients);
         return room;
     }
 
@@ -171,7 +202,7 @@ public class Room {
             int choice = 1;
             while (choice != 0) {
                 System.out.println("Which do you want to change: (Once you're done press 0)");
-                System.out.println("1) Number of room | 2) Beds\n3) Closet 4) Fridge\n5) Availability | 6) Section name | 7) VIP");
+                System.out.println("1) Number of room | 2) Beds\n3) Closet 4) Fridge | 5) Availability\n6) Section name | 7) VIP");
                 choice = sc.nextInt();
                 switch (choice) {
                     case 1:
@@ -259,5 +290,10 @@ public class Room {
         } else {
             System.out.println("Unsuccessful try!");
         }
+    }
+
+    public void addPatient(int id) {
+        patients.add(id);
+        System.out.println("Patient added successfully");
     }
 }

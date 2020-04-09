@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import java.lang.management.BufferPoolMXBean;
 import java.util.Scanner;
 
 public enum  Disease {

@@ -277,7 +277,7 @@ public class Hospital {
         System.out.println("--------------------------------------------------------");
         System.out.println("Facilities of " + section + " Section" + " : ");
         int counterScreen = 0;
-        for (int i = 0; i < patients.size(); i++) {
+        for (int i = 0; i <rooms.size(); i++) {
             Room store = rooms.get(i);
             if (store.getSection() == section) {
                 System.out.println("Room: " + store.getNumber());
@@ -294,5 +294,36 @@ public class Hospital {
             }
         }
         System.out.println("--------------------------------------------------------");
+    }
+
+    public void viewDoctorOfPatient(int patientId) {
+        int indexOfPatient = indexOfPND(patientId, 3);
+        if (indexOfPatient >= 0) {
+            Patient patient = patients.get(indexOfPatient);
+            int doctorId = patient.getDoctorID();
+            int indexOfDoctor = indexOfPND(doctorId, 1);
+            Doctor doctor = doctors.get(indexOfDoctor);
+            doctor.doctorLog();
+        } else {
+            System.out.println("Your patient isn't in our record!");
+        }
+    }
+
+    public void viewShift(int personnelId, boolean isDoctor) {
+        if (isDoctor) {
+            int indexOfDoctor = indexOfPND(personnelId, 1);
+            Doctor doctor = doctors.get(indexOfDoctor);
+            ArrayList<Shift> shifts = doctor.getAllShifts();
+            for (int i = 0; i < shifts.size(); i++) {
+                shifts.get(i).shiftLog();
+            }
+        } else {
+            int indexOfNurse = indexOfPND(personnelId, 2);
+            Nurse nurse = nurses.get(indexOfNurse);
+            ArrayList<Shift> shifts = nurse.getAllShifts();
+            for (int i = 0; i < shifts.size(); i++) {
+                shifts.get(i).shiftLog();
+            }
+        }
     }
 }

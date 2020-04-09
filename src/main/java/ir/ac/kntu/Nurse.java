@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Nurse {
+    // Fields
     private String name = null;
     private ArrayList<Integer> rooms = new ArrayList<>();
-    private ArrayList<Shift> shifts = new ArrayList<Shift>(5);
+    private ArrayList<Shift> shifts = new ArrayList<Shift>();
     private int personnelID = 0;
 
+    // Constructors
     public Nurse() {}
 
     public Nurse(String name, ArrayList<Integer> rooms, ArrayList<Shift> shifts, int personnelID) {
@@ -18,36 +20,40 @@ public class Nurse {
         this.personnelID = personnelID;
     }
 
-    public String getName() {
-        return name;
-    }
 
+    // Setters
     public void setName(String name) {
         this.name = name;
     }
 
-    public ArrayList<Integer> getRooms() {
-        return rooms;
-    }
 
     public void setRooms(ArrayList<Integer> rooms) {
         this.rooms = rooms;
-    }
-
-    public ArrayList<Shift> getShifts() {
-        return shifts;
     }
 
     public void setShifts(ArrayList<Shift> shifts) {
         this.shifts = shifts;
     }
 
-    public int getPersonnelID() {
-        return personnelID;
-    }
-
     public void setPersonnelID(int personnelID) {
         this.personnelID = personnelID;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Integer> getAllRooms() {
+        return new ArrayList<Integer>(rooms);
+    }
+
+    public ArrayList<Shift> getShifts() {
+        return shifts;
+    }
+
+    public int getPersonnelID() {
+        return personnelID;
     }
 
     public void newNurse(Hospital hospital) {
