@@ -9,7 +9,7 @@ public enum Insurance {
 
     private final String insuranceText;
 
-    private Insurance(String insuranceText) {
+    Insurance(String insuranceText) {
         this.insuranceText = insuranceText;
     }
 
@@ -24,11 +24,11 @@ public enum Insurance {
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-               return SOCIAL_SUPPLEMENT;
-           case 2:
-               return ARMY_FORCES;
-           case 3:
-               return MEDICAL_SERVICES;
+                return SOCIAL_SUPPLEMENT;
+            case 2:
+                return ARMY_FORCES;
+            case 3:
+                return MEDICAL_SERVICES;
         }
         return null;
     }

@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import javax.script.ScriptContext;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,19 +28,6 @@ public class Hospital {
         setPriceOfVipRoom(priceOfVipRoom);
     }
 
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setBeds(int beds) {
-        this.beds = beds;
-    }
-
     public void setDoctors(ArrayList<Doctor> doctors) {
         this.doctors = doctors;
     }
@@ -63,12 +49,25 @@ public class Hospital {
         return name;
     }
 
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getBeds() {
         return beds;
+    }
+
+    public void setBeds(int beds) {
+        this.beds = beds;
     }
 
     public ArrayList<Doctor> getAllDoctors() {
@@ -423,7 +422,7 @@ public class Hospital {
                     for (int j = 0; j < store.getAllBeds().size(); j++) {
                         store.getAllBeds().get(j).facilityLog();
                     }
-                break;
+                    break;
                 case PHONE:
                     if (store.getVip() == true) {
                         store.getPhone().facilityLog();

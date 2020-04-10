@@ -19,38 +19,38 @@ public class Facility {
         this.lastCheckUp = lastCheckUp;
     }
 
-    // Setters
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
-    public void setLastCheckUp(Date lastCheckUp) {
-        this.lastCheckUp = lastCheckUp;
-    }
-
     // Getters
     public Type getType() {
         return type;
+    }
+
+    // Setters
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public int getNumber() {
         return number;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public boolean isState() {
         return state;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
     public Date getLastCheckUp() {
         return lastCheckUp;
+    }
+
+    public void setLastCheckUp(Date lastCheckUp) {
+        this.lastCheckUp = lastCheckUp;
     }
 
     // View & New & Edit Section

@@ -11,7 +11,8 @@ public class ShiftDate {
         this.setMinute(minute);
     }
 
-    public ShiftDate() {}
+    public ShiftDate() {
+    }
 
 
     public int getHour() {

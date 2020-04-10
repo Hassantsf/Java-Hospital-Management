@@ -9,7 +9,9 @@ public class Doctor {
     private ArrayList<Shift> shifts = new ArrayList<Shift>();
     private int personnelID = 0;
 
-    public Doctor() {}
+    public Doctor() {
+    }
+
     public Doctor(String name, ArrayList<Integer> patientIDs, ArrayList<Shift> shifts, int personnelID) {
         this.setName(name);
         this.setPatientIDs(patientIDs);
@@ -97,7 +99,7 @@ public class Doctor {
         Shift tool = new Shift();
         Scanner sc = new Scanner(System.in);
         int choice = 1;
-        while (choice !=0 ) {
+        while (choice != 0) {
             System.out.println("1) Name | 2) Patients ID | 3) Shifts | 4) Personnel ID");
             choice = sc.nextInt();
             switch (choice) {

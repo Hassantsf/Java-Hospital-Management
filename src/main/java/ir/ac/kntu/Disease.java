@@ -2,7 +2,7 @@ package ir.ac.kntu;
 
 import java.util.Scanner;
 
-public enum  Disease {
+public enum Disease {
     BURNING("Burning"),
     INJURY("Injury"),
     ACCIDENT("Accident"),
@@ -10,13 +10,14 @@ public enum  Disease {
 
     private final String diseaseText;
 
-    private Disease(String diseaseText) {
+    Disease(String diseaseText) {
         this.diseaseText = diseaseText;
     }
 
     public String toString() {
         return diseaseText;
     }
+
     public Disease chooseDisease() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Which Disease:");

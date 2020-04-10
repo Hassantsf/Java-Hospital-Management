@@ -9,7 +9,7 @@ public enum Section {
 
     private final String sectionText;
 
-    private Section(String sectionText) {
+    Section(String sectionText) {
         this.sectionText = sectionText;
     }
 

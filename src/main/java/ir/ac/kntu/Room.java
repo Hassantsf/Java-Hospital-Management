@@ -32,49 +32,22 @@ public class Room {
         setPatients(patients);
     }
 
-    // Setters
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public void setBeds(ArrayList<Facility> beds) {
         this.beds = beds;
-    }
-
-    public void setCloset(Facility closet) {
-        this.closet = closet;
-    }
-
-    public void setFridge(Facility fridge) {
-        this.fridge = fridge;
-    }
-
-    private void setTv(Facility tv) {
-        this.tv = tv;
-    }
-
-    public void setPhone(Facility phone) {
-        this.phone = phone;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
-    public void setSection(Section section) {
-        this.section = section;
-    }
-
-    public void setVip(boolean vip) {
-        this.vip = vip;
     }
 
     public void setPatients(ArrayList<Integer> patients) {
         this.patients = patients;
     }
+
     // Getters
     public int getNumber() {
         return number;
+    }
+
+    // Setters
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public ArrayList<Facility> getAllBeds() {
@@ -85,28 +58,56 @@ public class Room {
         return fridge;
     }
 
+    public void setFridge(Facility fridge) {
+        this.fridge = fridge;
+    }
+
     public Facility getCloset() {
         return closet;
+    }
+
+    public void setCloset(Facility closet) {
+        this.closet = closet;
     }
 
     public Facility getTv() {
         return tv;
     }
 
+    private void setTv(Facility tv) {
+        this.tv = tv;
+    }
+
     public Facility getPhone() {
         return phone;
+    }
+
+    public void setPhone(Facility phone) {
+        this.phone = phone;
     }
 
     public boolean isState() {
         return state;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
     public Section getSection() {
         return section;
     }
 
+    public void setSection(Section section) {
+        this.section = section;
+    }
+
     public boolean getVip() {
         return vip;
+    }
+
+    public void setVip(boolean vip) {
+        this.vip = vip;
     }
 
     public ArrayList<Integer> getAllPatients() {
@@ -187,7 +188,7 @@ public class Room {
 
         System.out.println("Your room by default is available!");
         newState = true;
-        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip,patients);
+        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip, patients);
         return room;
     }
 
@@ -218,7 +219,7 @@ public class Room {
                         } else {
                             System.out.println("We can't find your item.");
                         }
-                            break;
+                        break;
                     }
 
                     case 3:
@@ -238,7 +239,7 @@ public class Room {
                         System.out.println("Section name of room changed successfully!");
                         break;
                     case 7: {
-                        if(vip) {
+                        if (vip) {
                             System.out.println("Which item?");
                             System.out.println("1) TV | 2) Phone");
                             int n = sc.nextInt();
@@ -266,7 +267,7 @@ public class Room {
         System.out.println("Room\n" +
                 "number = " + number +
                 "  state = " + (state ? "Available" : "Unavailable") +
-                "  section = '" + getSection() + "\'\n" + "Beds: ");
+                "  section = '" + getSection() + "'\n" + "Beds: ");
         for (int i = 0; i < beds.size(); i++) {
             beds.get(i).facilityLog();
         }

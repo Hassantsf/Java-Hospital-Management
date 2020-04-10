@@ -7,7 +7,7 @@ class DateTools {
     public void changeDate(Date oldDate) {
         System.out.println("Changing Date!\n");
         Scanner sc = new Scanner(System.in);
-        int year = 1970 , month = 0, day = 1;
+        int year = 1970, month = 0, day = 1;
         while (!isValidDate(year, month, day)) {
             System.out.println("Enter Year: ");
             year = sc.nextInt();
@@ -26,7 +26,8 @@ class DateTools {
         oldDate.setDate(day);
         System.out.println("Your Change Was Successful!");
     }
-    public boolean isValidDate(int year, int month, int day){
+
+    public boolean isValidDate(int year, int month, int day) {
         boolean result = true;
         if (year < 1970 || year > 2030) {
             result = false;

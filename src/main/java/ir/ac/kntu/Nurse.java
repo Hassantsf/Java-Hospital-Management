@@ -11,7 +11,8 @@ public class Nurse {
     private int personnelID = 0;
 
     // Constructors
-    public Nurse() {}
+    public Nurse() {
+    }
 
     public Nurse(String name, ArrayList<Integer> rooms, ArrayList<Shift> shifts, int personnelID) {
         this.name = name;
@@ -19,13 +20,6 @@ public class Nurse {
         this.shifts = shifts;
         this.personnelID = personnelID;
     }
-
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     public void setRooms(ArrayList<Integer> rooms) {
         this.rooms = rooms;
@@ -35,13 +29,14 @@ public class Nurse {
         this.shifts = shifts;
     }
 
-    public void setPersonnelID(int personnelID) {
-        this.personnelID = personnelID;
-    }
-
     // Getters
     public String getName() {
         return name;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<Integer> getAllRooms() {
@@ -56,6 +51,10 @@ public class Nurse {
         return personnelID;
     }
 
+    public void setPersonnelID(int personnelID) {
+        this.personnelID = personnelID;
+    }
+
     public Nurse newNurse(Hospital hospital) {
         String newName;
         ArrayList<Integer> newRooms = new ArrayList<>();
@@ -67,7 +66,7 @@ public class Nurse {
         newName = sc.nextLine();
         System.out.println("Do You Want to Add Rooms: (1 Yes | 2 No)");
         choice = sc.nextInt();
-        if (choice == 1){
+        if (choice == 1) {
             System.out.println("How Many Rooms Do You Want to Add?");
             n = sc.nextInt();
             for (int i = 0; i < n; i++) {
@@ -88,7 +87,7 @@ public class Nurse {
         System.out.println("Do You Want to Add Shifts: (1 Yes | 2 No)");
         choice = sc.nextInt();
 
-        if (choice == 1){
+        if (choice == 1) {
             System.out.println("How Many Shifts Do You Want to Add?");
             n = sc.nextInt();
             for (int i = 0; i < n; i++) {
@@ -109,8 +108,7 @@ public class Nurse {
                 ", personnelID=" + personnelID + "\n");
         if (rooms.size() == 0) {
             System.out.println("No Room Have been registered");
-        }
-        else {
+        } else {
             System.out.println("Rooms: ");
             for (int i = 0; i < rooms.size(); i++) {
                 System.out.println("Room " + (i + 1) + ": " + rooms.get(i));

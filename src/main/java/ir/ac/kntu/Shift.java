@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +11,8 @@ public class Shift {
     private Week day = Week.FRIDAY;
 
     // Constructors
-    public Shift() {}
+    public Shift() {
+    }
 
     public Shift(ShiftDate startShift, ShiftDate endShift, Week day, int numberOfShift) {
         this.startShift = startShift;
@@ -81,7 +81,7 @@ public class Shift {
         System.out.println("------------------------------------------------");
     }
 
-    public void changeShift(Shift shift, Doctor doctor,Nurse nurse, int number, int choice) {
+    public void changeShift(Shift shift, Doctor doctor, Nurse nurse, int number, int choice) {
         Hospital hospital = new Hospital();
         ShiftDate newDate = new ShiftDate();
         switch (choice) {
@@ -109,6 +109,7 @@ public class Shift {
         }
         return -1;
     }
+
     public void menuOfChangeShift(int choice) {
         // For Doctor
         if (choice == 1) {

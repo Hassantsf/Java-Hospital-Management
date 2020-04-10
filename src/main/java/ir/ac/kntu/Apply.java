@@ -2,7 +2,7 @@ package ir.ac.kntu;
 
 import java.util.Scanner;
 
-public enum  Apply {
+public enum Apply {
     ORDINARY("Ordinary"),
     EMERGENCY("Emergency");
 

@@ -16,10 +16,11 @@ public class Patient {
     private int caseNumber = 0;
     private Insurance insurance;
     private int doctorID = 0;
-    private int room  = 0;
+    private int room = 0;
 
     // Constructors
-    public Patient() {}
+    public Patient() {
+    }
 
     public Patient(String name, Section section, Disease disease, Apply typeOfApply,
                    Insurance insurance, int id, int age, int caseNumber, int doctorID, Date confineDate, boolean gender, int room) {
@@ -125,12 +126,12 @@ public class Patient {
         this.doctorID = doctorID;
     }
 
-    public void setRoom(int room) {
-        this.room = room;
-    }
-
     public int getRoom() {
         return room;
+    }
+
+    public void setRoom(int room) {
+        this.room = room;
     }
 
     public void patientLog() {
@@ -139,7 +140,7 @@ public class Patient {
                 " id = " + id +
                 " section = '" + section + '\'' +
                 " disease = '" + disease + '\'' +
-                " typeOfApply = '" + typeOfApply + "\'\n" +
+                " typeOfApply = '" + typeOfApply + "'\n" +
                 " confineDate = '" + confineDate + '\'' +
                 " gender = '" + (gender ? "male" : "female") + '\'' +
                 " age = " + age +
@@ -182,20 +183,12 @@ public class Patient {
         System.out.println("Please enter the right number:");
         System.out.println("1) Male 2) Female");
         int choice = sc.nextInt();
-        if (choice == 1) {
-            boolStore = true;
-        } else {
-            boolStore = false;
-        }
+        boolStore = choice == 1;
 
         System.out.println("Do you want VIP room? (1 Yes | 2 No)");
         choice = sc.nextInt();
         boolean isVip;
-        if (choice == 1) {
-            isVip = true;
-        } else  {
-            isVip = false;
-        }
+        isVip = choice == 1;
         room = hospital.choosingRoom(intStore[0], isVip);
         System.out.println("Patient will be rest in room " + room);
 
@@ -253,12 +246,12 @@ public class Patient {
                 case 8:
                     int tempId = hospital.changeInt("new doctor ID");
                     int index = hospital.indexOfPND(doctorID, 3);
-                    if (index >= 0){
+                    if (index >= 0) {
                         int indexOfOldDoctor = hospital.indexOfPND(doctorID, 3);
                         int indexOfNewDoctor = hospital.indexOfPND(tempId, 3);
 
                         Doctor oldDoctor = hospital.getAllDoctors().get(indexOfOldDoctor);
-                        oldDoctor.getAllPatientIDs().remove(oldDoctor.getAllPatientIDs().indexOf(id));
+                        oldDoctor.getAllPatientIDs().remove((Integer) id);
                         hospital.registerDoctor(oldDoctor, indexOfOldDoctor);
 
                         Doctor newDoctor = hospital.getAllDoctors().get(indexOfNewDoctor);
