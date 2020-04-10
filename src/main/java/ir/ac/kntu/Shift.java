@@ -70,12 +70,15 @@ public class Shift {
     }
 
     public void shiftLog() {
+        System.out.println("Shift");
+        System.out.println("------------------------------------------------");
         System.out.println("Start of Shift: ");
         startShift.shiftDateLog();
         System.out.println("End of Shift: ");
         endShift.shiftDateLog();
         System.out.println("Number of Shift: " + numberOfShift);
         System.out.println("Day of Week: " + day);
+        System.out.println("------------------------------------------------");
     }
 
     public void changeShift(Shift shift, Doctor doctor,Nurse nurse, int number, int choice) {
@@ -83,16 +86,16 @@ public class Shift {
         ShiftDate newDate = new ShiftDate();
         switch (choice) {
             case 1:
-                newDate.changeShiftDate(this, 1);
+                newDate.changeShiftDate(shift, 1);
                 break;
             case 2:
-                newDate.changeShiftDate(this, 2);
+                newDate.changeShiftDate(shift, 2);
                 break;
             case 3:
-                numberOfShift = hospital.changeInt("Number of The Shift: ");
+                shift.setNumberOfShift(hospital.changeInt("Number of The Shift: "));
                 break;
             case 4:
-                day = day.chooseWeek();
+                shift.setDay(day.chooseWeek());
                 break;
         }
         System.out.println("Your Shift Changed Successfully");

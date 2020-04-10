@@ -187,17 +187,17 @@ public class Patient {
         } else {
             boolStore = false;
         }
-        System.out.println("Enter room number: ");
-        int room = sc.nextInt();
 
-        int indexOfRoom = hospital.indexOfRoom(room, section);
-        if (indexOfRoom >= 0) {
-            Room patientRoom = hospital.getAllRooms().get(indexOfRoom);
-            patientRoom.addPatient(intStore[0]);
-        } else {
-            System.out.println("This room is unavailable!");
-            room = 0;
+        System.out.println("Do you want VIP room? (1 Yes | 2 No)");
+        choice = sc.nextInt();
+        boolean isVip;
+        if (choice == 1) {
+            isVip = true;
+        } else  {
+            isVip = false;
         }
+        room = hospital.choosingRoom(intStore[0], isVip);
+        System.out.println("Patient will be rest in room " + room);
 
         Patient newPatient = new Patient(name, section, disease, typeOfApply, insurance
                 , intStore[0], intStore[1], intStore[2], intStore[3], new Date(), boolStore, room);

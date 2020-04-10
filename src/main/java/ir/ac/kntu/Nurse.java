@@ -48,15 +48,15 @@ public class Nurse {
         return new ArrayList<Integer>(rooms);
     }
 
-    public ArrayList<Shift> getShifts() {
-        return shifts;
+    public ArrayList<Shift> getAllShifts() {
+        return new ArrayList<Shift>(shifts);
     }
 
     public int getPersonnelID() {
         return personnelID;
     }
 
-    public void newNurse(Hospital hospital) {
+    public Nurse newNurse(Hospital hospital) {
         String newName;
         ArrayList<Integer> newRooms = new ArrayList<>();
         ArrayList<Shift> newShifts = new ArrayList<>();
@@ -100,8 +100,7 @@ public class Nurse {
 
         System.out.println("Enter The Personnel ID: ");
         int newID = sc.nextInt();
-        Nurse newNurse = new Nurse(newName, newRooms, newShifts, newID);
-        hospital.addNurse(newNurse);
+        return new Nurse(newName, newRooms, newShifts, newID);
     }
 
     public void nurseLog() {

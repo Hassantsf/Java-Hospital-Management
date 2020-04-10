@@ -149,7 +149,7 @@ public class Room {
         fridge = fridge.newFacility(Type.FRIDGE);
 
         // Section
-        section.chooseSection();
+        section = section.chooseSection();
 
         // VIP Section
         System.out.println("Is This Room VIP: ( 1) Yes | 2) No )");
@@ -174,19 +174,20 @@ public class Room {
             for (int i = 0; i < n; i++) {
                 System.out.println("Enter ID: ");
                 int id = sc.nextInt();
-                int index = hospital.indexOfPND(id, 3);
-                if (index >=0 ) {
-                    Patient patient = hospital.getAllPatients().get(index);
-                    patient.setRoom(number);
-                    hospital.registerPatient(patient, index);
-                    System.out.println("Your Patient added room successfully!");
-                }
+                patients.add(id);
+//                int index = hospital.indexOfPND(id, 3);
+//                if (index >=0 ) {
+//                    Patient patient = hospital.getAllPatients().get(index);
+//                    patient.setRoom(number);
+//                    hospital.registerPatient(patient, index);
+//                    System.out.println("Your Patient added room successfully!");
+//                }
             }
         }
 
         System.out.println("Your room by default is available!");
         newState = true;
-        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip, patients);
+        Room room = new Room(number, beds, closet, fridge, tv, phone, newState, section, vip,patients);
         return room;
     }
 
@@ -271,6 +272,14 @@ public class Room {
         }
         closet.facilityLog();
         fridge.facilityLog();
+        if (vip) {
+            System.out.println("VIP Facilities");
+            tv.facilityLog();
+            phone.facilityLog();
+        }
+        for (int i = 0; i < patients.size(); i++) {
+            System.out.println("Patient " + (i + 1) + " : " + patients.get(i));
+        }
     }
 
     public int indexOfBed(int numberOfBed) {
@@ -296,4 +305,6 @@ public class Room {
         patients.add(id);
         System.out.println("Patient added successfully");
     }
+    // Utiilities
+
 }

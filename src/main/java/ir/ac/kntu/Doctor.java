@@ -34,6 +34,8 @@ public class Doctor {
     }
 
     public Doctor newDoctor(Hospital hospital) {
+        System.out.println("Creating new Dotor:");
+        System.out.println("---------------------------------------------------");
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter name: ");
         String name = sc.nextLine();
@@ -69,6 +71,7 @@ public class Doctor {
         }
 
         System.out.println("Your doctor was successfully created!");
+        System.out.println("---------------------------------------------------");
         return new Doctor(name, IDs, shifts, personnelID);
     }
 
@@ -111,10 +114,12 @@ public class Doctor {
                         System.out.println("Your Shift Found!");
                         tool.menuOfChangeShift(1);
                         int newChoice = sc.nextInt();
-                        tool.changeShift(shifts.get(index), this, null, number, newChoice);
+                        Shift newShift = shifts.get(index);
+                        tool.changeShift(newShift, this, null, number, newChoice);
                         System.out.println("Your Change Was Successful!");
+                        shifts.set(index, newShift);
                     }
-                    shifts.get(index).setNumberOfShift(number);
+
                     break;
                 }
                 case 4: {
@@ -125,7 +130,6 @@ public class Doctor {
 
             }
             System.out.println("New Changing: ");
-            choice = sc.nextInt();
         }
         hospital.registerDoctor(this, indexOfDoctor);
     }
